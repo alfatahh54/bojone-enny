@@ -15,9 +15,6 @@ function updateCountdown() {
     document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
 }
 
-setInterval(updateCountdown, 1000);
-updateCountdown();
-
 // Scroll to sections
 document.querySelector('.scroll-down-btn').addEventListener('click', () => {
     document.querySelector('section:not(.hero-section)').scrollIntoView({ behavior: 'smooth' });
@@ -121,7 +118,7 @@ function renderRSVPList(items) {
 
 function updatePaginationControls(totalItems, totalPages) {
     const pageInfo = document.getElementById('pageInfo');
-    pageInfo.textContent = `Halaman ${currentPage} dari ${totalPages} (${totalItems} total)`;
+    pageInfo.textContent = `${currentPage} / ${totalPages ?? 1}`;
     
     document.getElementById('prevPage').disabled = currentPage === 1;
     document.getElementById('nextPage').disabled = currentPage === totalPages;
@@ -186,43 +183,55 @@ function formatDateForGoogleCal(date) {
     return date.toISOString().replace(/-|:|\.\d+/g, '');
 }
 
-// Floating hearts click animation
-document.addEventListener('DOMContentLoaded', function() {
-    const footer = document.querySelector('.floral-pattern');
-    
-    footer.addEventListener('click', function(e) {
-        if (e.target === footer) {
-            createHeart(e.clientX, e.clientY);
-        }
+// Music Player
+const backgroundMusic = document.getElementById('background-music');
+const musicToggle = document.getElementById('music-toggle');
+const playIcon = document.getElementById('play-icon');
+const pauseIcon = document.getElementById('pause-icon');
+const musicBalloon = document.getElementById('music-balloon');
+
+let isPlaying = false;
+
+// Function to toggle music play/pause
+function toggleMusic() {
+    if (isPlaying) {
+        backgroundMusic.pause();
+        playIcon.classList.remove('hidden');
+        pauseIcon.classList.add('hidden');
+        musicBalloon.classList.remove('playing');
+    } else {
+        backgroundMusic.play().catch(error => {
+            console.error("Autoplay prevented:", error);
+            // Optionally, show a message to the user to click to play music
+        });
+        playIcon.classList.add('hidden');
+        pauseIcon.classList.remove('hidden');
+        musicBalloon.classList.add('playing');
+    }
+    isPlaying = !isPlaying;
+}
+
+// Event listener for music toggle button
+musicToggle.addEventListener('click', toggleMusic);
+
+// Play music automatically when the invitation is opened
+document.getElementById('open-invitation-button').addEventListener('click', function() {
+    // Show music balloon
+    musicBalloon.classList.remove('hidden');
+
+    // Attempt to play music
+    backgroundMusic.play().then(() => {
+        isPlaying = true;
+        playIcon.classList.add('hidden');
+        pauseIcon.classList.remove('hidden');
+        musicBalloon.classList.add('playing');
+    }).catch(error => {
+        console.error("Autoplay prevented:", error);
+        // If autoplay is prevented, ensure the play icon is visible
+        isPlaying = false;
+        playIcon.classList.remove('hidden');
+        pauseIcon.classList.add('hidden');
     });
-    
-    function createHeart(x, y) {
-        const heart = document.createElement('div');
-        heart.classList.add('heart-click');
-        heart.style.left = x + 'px';
-        heart.style.top = y + 'px';
-        
-        document.body.appendChild(heart);
-        
-        setTimeout(() => {
-            heart.remove();
-        }, 1000);
-    }
-    
-    // Original floating hearts
-    const count = 15;
-    for (let i = 0; i < count; i++) {
-        const heart = document.createElement('div');
-        heart.className = 'floating-heart';
-        heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.top = Math.random() * 100 + 'vh';
-        heart.style.animationDuration = 5 + Math.random() * 15 + 's';
-        heart.style.animationDelay = Math.random() * 5 + 's';
-        document.body.appendChild(heart);
-    }
-    // Initial load
-    loadRSVPs();
-    createHeart();
 });
 
 // Add CSS for click hearts
@@ -255,3 +264,76 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+// Floating hearts click animation
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM loaded');
+    
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    const footer = document.querySelector('.floral-pattern');
+    
+    footer.addEventListener('click', function(e) {
+        if (e.target === footer) {
+            createHeart(e.clientX, e.clientY);
+        }
+    });
+    
+    function createHeart(x, y) {
+        const heart = document.createElement('div');
+        heart.classList.add('heart-click');
+        heart.style.left = x + 'px';
+        heart.style.top = y + 'px';
+        
+        document.body.appendChild(heart);
+        
+        setTimeout(() => {
+            heart.remove();
+        }, 1000);
+    }
+    
+    // Initial load
+    loadRSVPs();
+    createHeart();
+
+    // Get guest name from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const guestName = urlParams.get('to');
+    const guestNameElement = document.getElementById('guest-name');
+    const invitationSection = document.getElementById('invitation-section');
+    const openInvitationButton = document.getElementById('open-invitation-button');
+
+    // Get all sections that should be hidden initially
+    const hiddenSections = document.querySelectorAll('body > div > section:not(#invitation-section), footer');
+
+    if (guestName) {
+        guestNameElement.textContent = guestName;
+    } else {
+        guestNameElement.textContent = 'Tamu Undangan'; // Default if 'to' parameter is not present
+    }
+    if(screen.width >= 768){
+        console.log('screen width >= 768');
+        
+        openInvitationButton.classList.add('hidden');   
+        hiddenSections.forEach(section => {
+            section.classList.remove('hidden'); // Show all other sections
+        });
+        isPlaying = true;
+        playIcon.classList.add('hidden');
+        pauseIcon.classList.remove('hidden');
+        musicBalloon.classList.add('playing');
+        musicBalloon.classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+        openInvitationButton.classList.remove('hidden');
+    }
+    openInvitationButton.addEventListener('click', () => {
+        invitationSection.classList.add('hidden'); // Hide the invitation section
+        hiddenSections.forEach(section => {
+            section.classList.remove('hidden'); // Show all other sections
+        });
+        // Optional: Scroll to the top or to the hero section
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+});

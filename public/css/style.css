@@ -3,6 +3,28 @@
     to { opacity: 1; transform: translateY(0); }
 }
 
+section {
+    width: 100%;
+}
+
+@keyframes slideLeft {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+@keyframes slideRight {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+
+.slide-left {
+    animation: slideLeft 1s ease-in-out;
+}
+
+.slide-right {
+    animation: slideRight 1s ease-in-out;
+}
+
 @keyframes floating {
     0% { transform: translateY(0px); }
     50% { transform: translateY(-10px); }
@@ -39,6 +61,7 @@
 
 .top-ornament img {
     animation: pulse 2s ease-in-out infinite;
+    width: 100%;
 }
 
 body {
@@ -142,6 +165,7 @@ body {
     width: 100%;
     height: 100%;
     top: 0;
+    left: 0;
     overflow: hidden;
 }
 
@@ -154,6 +178,7 @@ body {
     background-color: transparent;
     background-repeat: no-repeat;
     opacity: 0.8;
+    z-index: -1;
     animation: float-up 8s linear infinite;
 }
 
@@ -205,4 +230,77 @@ body {
         transform: translateY(-600%) rotate(360deg);
         opacity: 0;
     }
+}
+
+/* Music Balloon */
+.music-balloon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #d4a76a;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    z-index: 1000;
+    transition: transform 0.3s ease-in-out;
+}
+
+.vinyl-record {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(90deg, #333 30%, #555 50%, #333 70%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.record-img {
+    width: 50%;
+    height: 50%;
+    background-color: #d4a76a;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.music-balloon.playing .vinyl-record {
+    animation: rotate 5s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.music-balloon:hover {
+    transform: scale(1.1);
+}
+
+.music-toggle-button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+}
+
+.music-toggle-button svg {
+    width: 50%; /* Ukuran ikon */
+    height: 50%;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }

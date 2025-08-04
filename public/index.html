@@ -3,280 +3,319 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Undangan Pernikahan Kami</title>
+    <title>Undangan Pernikahan</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" as="style">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" as="style">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic&display=swap" as="style">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="./fav.ico">
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic&display=swap">
     <link rel="stylesheet" href="./css/style.css" type="text/css">
-    <script src="./js/script.js" type="text/javascript"></script>
 </head>
-<body class="overflow-x-hidden">
-    <!-- Hero Section -->
-    <section class="hero-section min-h-screen flex flex-col justify-center items-center text-center px-4 py-10 relative overflow-hidden">
-        <!-- <div class="absolute inset-0 bg-black opacity-10" ></div> -->
-        <div class="relative z-10 section-animate">
-            <h1 class="text-2xl font-bold text-pinky font-sacrramento">The Wedding Of</h1>
-            <div class="flex justify-center items-center">
-                <img src="./assets/A.gif" alt="logo" class="w-[85%]">
-            </div>
-            <div class="couple-name text-4xl text-pinky my-4">
-                <!-- <img src="./bg-couple-name.png" alt="bg-couple-name" class="absolute"> -->
-                <span>Alfatah & Anggreyni</span>
-            </div>
-            <p class="text-pinky mb-1">Minggu, 28 September 2025</p>
-            <div class="flex justify-center">
-                <div class="countdown flex justify-center gap-2 mb-4 text-pinky w-[70%]">
-                    <div class="countdown-item py-2 px-2 rounded-lg bg-[#ffc6c6]/30"><span id="days">00</span> Hari</div>
-                    <div class="countdown-item py-2 px-2 rounded-lg bg-[#ffc6c6]/30"><span id="hours">00</span> Jam</div>
-                    <div class="countdown-item py-2 px-2 rounded-lg bg-[#ffc6c6]/30"><span id="minutes">00</span> Menit</div>
-                    <div class="countdown-item py-2 px-2 rounded-lg bg-[#ffc6c6]/30"><span id="seconds">00</span> Detik</div>
-                </div>
-            </div>
-            <button class="btn-primary bg-[#e27e7e] hover:bg-[#e78e8e] text-white font-bold py-3 px-6 rounded-full text-sm">Simpan ke Kalender</button>
+<body class="overflow-x-hidden flex flex-col md:flex-row w-screen">
+    <section id="invitation-section" class="hero-section md:sticky top-0 grow h-screen flex flex-col justify-center items-center text-center text-white bg-cover">
+        <div class="w-full absolute z-[-1] top-0 h-full bg-white" >
+            <img src="./assets/bg-home.jpg" alt="">
         </div>
-        
-        <div class="absolute hidden bottom-10 left-0 right-0 text-center">
-            <button class="scroll-down-btn text-pinky animate-bounce">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                </svg>
+        <h1 class="text-3xl mb-4 font-sacrramento text-pinky text-bold">Wedding Invitation</h1>
+        <img src="./assets/A.gif" alt="logo" class="w-[50%] max-w-[240px] mb-4">
+        <div class="bg-opacity-50 px-8 rounded-lg mx-4">
+            <h2 class="mb-2 text-sm text-pinky">Yth. Bapak/Ibu/Saudara/i,</h2>
+            <h3 id="guest-name" class="title-font font-bold text-lg text-pinky capitalize">Tamu Undangan</h3>
+            <p class="mb-4 text-sm text-pinky">Dengan hormat, kami mengundang Anda untuk hadir di acara pernikahan kami.</p>
+            <button id="open-invitation-button" class="bg-[#e27e7e] hover:bg-[#e78e8e] text-white px-8 py-2 rounded-full text-sm transition-colors duration-300">
+                Buka Undangan
             </button>
         </div>
     </section>
-    
-    <!-- Couple Info Section -->
-    <section class="py-[30%] bg-[url('https://svgshare.com/i/11wG.svg')] bg-[length:300px] bg-center bg-no-repeat section-animate overflow-hidden">
-        <div class="top-ornament">
-            <img src="./assets/top-ornament.png" alt="top-ornament">
-        </div>
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="font-arabic py-4 m-0 text-3xl font-bold">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</h2>
-            <h2 class="font-esthetic py-4 m-0 text-lg">Assalamualaikum Warahmatullahi Wabarakatuh</h2>
-            <p class="pb-4 px-2 m-0">Tanpa mengurangi rasa hormat, kami mengundang Anda untuk berkenan menghadiri acara pernikahan kami:</p>
-            <div class="flex flex-col md:flex-row justify-center items-center gap-12">
-                <div class="couple-card transform hover:scale-105 transition-transform duration-300">
-                    <div class="w-[60%] h-[60%] mx-auto rounded-full overflow-hidden border-4 border-[#d4a4a0] shadow-lg mb-6">
-                        <img src="./assets/man.png" 
-                             alt="John" class="w-full h-full object-cover">
-                    </div>
-                    <h3 class="text-3xl font-bold text-pinky mb-2 couple-name">Alfatah Hidayat</h3>
-                    <p class="text-gray-600">Putra dari Bpk. Tri Yasin (Alm) & Ibu Soliah</p>
+    <div class="w-screen md:w-[520px]">
+        <!-- Hero Section -->
+        <section class="hidden hero-section min-h-screen flex flex-col justify-center items-center text-center px-4 py-10 relative overflow-hidden">
+            <!-- <div class="absolute inset-0 bg-black opacity-10" ></div> -->
+            <div class="relative z-10 section-animate">
+                <h2 class="text-2xl font-bold text-pinky font-sacrramento">The Wedding Of</h2>
+                <div class="flex justify-center items-center">
+                    <img src="./assets/A.gif" alt="logo" class="w-[85%]">
                 </div>
-
-                <div class="text-5xl text-pinky hidden md:block">❤️</div>
-
-                <div class="couple-card transform hover:scale-105 transition-transform duration-300">
-                    <div class="w-[60%] h-[60%] mx-auto rounded-full overflow-hidden border-4 border-[#d4a4a0] shadow-lg mb-6">
-                        <img src="./assets/woman.png" 
-                             alt="Jane" class="w-full h-full object-cover">
-                    </div>
-                    <h3 class="text-3xl font-bold text-pinky mb-2 couple-name">Anggreyni F. Kordak</h3>
-                    <p class="text-gray-600">Putri dari Bpk. Son Refly Kordak & Ibu Fruli N Warong</p>
+                <div class="couple-name text-4xl text-pinky my-4">
+                    <!-- <img src="./bg-couple-name.png" alt="bg-couple-name" class="absolute"> -->
+                    <span>Alfatah & Anggreyni</span>
                 </div>
+                <p class="text-pinky mb-1">Minggu, 28 September 2025</p>
+                <div class="flex justify-center">
+                    <div class="countdown flex justify-center gap-2 mb-4 text-pinky w-[70%]">
+                        <div class="countdown-item py-2 px-2 rounded-lg bg-[#ffc6c6]/30"><span id="days">00</span> Hari</div>
+                        <div class="countdown-item py-2 px-2 rounded-lg bg-[#ffc6c6]/30"><span id="hours">00</span> Jam</div>
+                        <div class="countdown-item py-2 px-2 rounded-lg bg-[#ffc6c6]/30"><span id="minutes">00</span> Menit</div>
+                        <div class="countdown-item py-2 px-2 rounded-lg bg-[#ffc6c6]/30"><span id="seconds">00</span> Detik</div>
+                    </div>
+                </div>
+                <button class="btn-primary bg-[#e27e7e] hover:bg-[#e78e8e] text-white font-bold py-2 px-6 rounded-full text-sm">Simpan ke Kalender</button>
             </div>
-        </div>
-        <div class="bottom-ornament overflow-hidden">
-            <img src="./assets/bottom-ornament.png" class="w-screen" alt="bottom-ornament">
-        </div>
-    </section>
-
-    <!-- Quran Verse Section -->
-    <section class="py-20 bg-[url('https://svgshare.com/i/11wJ.svg')] bg-[length:400px] bg-center bg-no-repeat section-animate overflow-hidden">
-        <div class="container mx-auto px-4">
-            <div class="max-w-3xl mx-auto bg-white bg-opacity-90 p-8 rounded-lg shadow-lg text-center">
-                <h2 class="text-lg font-bold mb-4 text-gray-800">Firman Allah Tentang Pernikahan</h2>
-                <div class="arabic-text text-2xl mb-4 text-right font-arabic" dir="rtl">
-                    وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً
-                </div>
-                <p class="text-sm mb-4 text-gray-700">
-                    "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu istri-istri dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya diantaramu rasa kasih dan sayang." 
-                    <br>(QS. Ar-Rum: 21)
-                </p>
-                <div class="flex justify-center gap-4">
-                    <img src="./assets/man.png" alt="Pria muslim berdoa dengan khusyuk" class="rounded-full w-24 h-24 object-cover border-4 border-[#d4a4a0]">
-                    <img src="./assets/woman.png" alt="Wanita muslimah berdoa dengan khusyuk" class="rounded-full w-24 h-24 object-cover border-4 border-[#d4a4a0]">
-                </div>
+            
+            <div class="absolute hidden bottom-10 left-0 right-0 text-center">
+                <button class="scroll-down-btn text-pinky animate-bounce">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                    </svg>
+                </button>
             </div>
-        </div>
-        <!-- <div class="bottom-ornament overflow-hidden">
-            <img src="./bottom-ornament.png" class="w-screen" alt="bottom-ornament">
-        </div> -->
-    </section>
-    
-    <!-- Event Details Section -->
-    <section class="py-20 bg-[url('https://svgshare.com/i/11wK.svg')] bg-[length:350px] bg-center bg-no-repeat section-animate overflow-hidden">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-4 text-gray-800 font-sacrramento">Momen Bahagia</h2>
-            <p class="py-2 mb-4 text-center">Dengan memohon rahmat dan ridho Allah Subhanahu Wa Ta'ala, insyaAllah kami akan menyelenggarakan acara:</p>
-            <div class="flex flex-col md:flex-row justify-center gap-8">
-                <div class="bg-[#ffc6c6]/30 p-8 rounded-lg shadow-md text-center flex-1 max-w-md">
-                    <h3 class="text-lg font-bold mb-4 text-pinky">Akad Nikah</h3>
-                    <div class="mb-10">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 mx-auto text-pinky" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                        <p class="mt-2">Jumat, 19 September 2025</p>
-                        <p class="">09:00 - 11:00 WIB</p>
-                    </div>
-                    <div class="mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 mx-auto text-pinky" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                        <p class="mt-2">KUA Padamara</p>
-                        <p class="text-sm">Jalan Raya Padamara No. 30, Bojanegara, Padamara, Dusun 3, Purbalingga Lor, Kec. Purbalingga, Kabupaten Purbalingga, Jawa Tengah 53372</p>
-                    </div>
-                    <button class="mt-4 bg-[#e27e7e] hover:bg-[#e78e8e] text-white font-bold text-sm py-2 px-4 rounded" onclick="openMap('akad')">Lihat Peta</button>
-                </div>
-                <div class="bg-[#ffc6c6]/30 p-8 rounded-lg shadow-md text-center flex-1 max-w-md">
-                    <h3 class="text-lg font-bold mb-4 text-pinky">Resepsi</h3>
-                    <div class="mb-10">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 mx-auto text-pinky" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                        <p class="mt-2">Minggu, 28 September 2025</p>
-                        <p class="">14:00 - 16:00 WIB</p>
-                    </div>
-                    <div class="mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 mx-auto text-pinky" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                        <p class="mt-2">Kampung Kecil Sawangan</p>
-                        <p class="text-sm">Blk. DEF, Ruko Pancoran Mas, Jl. Raya Sawangan No.81, RT.1/RW.9, Mampang, Kec. Pancoran Mas, Kota Depok, Jawa Barat 16511</p>
-                    </div>
-                    <button class="mt-4 bg-[#e27e7e] text-sm hover:bg-[#e78e8e] text-white font-bold py-2 px-4 rounded" onclick="openMap('resepsi')">Lihat Peta</button>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- RSVP Section -->
-    <section class="py-20 bg-[url('https://svgshare.com/i/11wL.svg')] bg-[length:250px] bg-center bg-no-repeat section-animate overflow-hidden">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-sacrramento font-bold text-center mb-12 text-gray-800">Ucapan & Doa</h2>
-            <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-lg">
-                <form id="rsvpForm" class="text-sm mb-8 transition-all duration-500 hover:shadow-xl hover:bg-[#ffc6c6]/30 p-6 rounded-xl">
-                    <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2" for="name">Nama Anda</label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" type="text" required>
-                    </div>
-                    <div class="mb-4">
-                        <label class="block text-gray-700 font-bold mb-2">Kehadiran</label>
-                        <div class="flex gap-4">
-                            <label class="inline-flex items-center">
-                                <input type="radio" name="attendance" value=true checked class="form-radio text-pinky">
-                                <span class="ml-2">Hadir</span>
-                            </label>
-                            <label class="inline-flex items-center">
-                                <input type="radio" name="attendance" value=false class="form-radio text-pinky">
-                                <span class="ml-2">Tidak Hadir</span>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="mb-6">
-                        <label class="block text-gray-700 font-bold mb-2" for="message">Pesan/Ucapan</label>
-                        <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="message" rows="3"></textarea>
-                    </div>
-                    <div class="flex justify-center">
-                        <button type="submit" class="btn-primary bg-[#e27e7e] hover:bg-[#e78e8e] text-white font-bold py-2 px-6 rounded-full text-sm">Kirim Konfirmasi</button>
-                    </div>
-                </form>
-                
-                <div id="rsvpSuccess" class="hidden bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-6">
-                    <strong class="font-bold">Terima kasih!</strong>
-                    <span class="block sm:inline">Konfirmasi kehadiran Anda sudah kami terima.</span>
-                </div>
-                
-                <div class="rsvp-list-section mt-12">
-                    <h3 class="text-xl font-bold mb-4 text-center text-gray-800">Daftar Konfirmasi</h3>
-                    <div id="rsvpList" class="mb-4"></div>
-                    <div class="flex justify-between items-center">
-                        <button id="prevPage" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l">
-                            Prev
-                        </button>
-                        <div id="pageInfo" class="text-gray-700"></div>
-                        <button id="nextPage" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r">
-                            Next
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Gift Section -->
-    <section class="py-20 bg-[url('https://svgshare.com/i/11wM.svg')] bg-[length:300px] bg-center bg-no-repeat section-animate overflow-hidden">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-sacrramento font-bold text-center mb-12 text-gray-800">Hadiah</h2>
-            <div class="max-w-2xl mx-auto">
-                <div class="bg-white p-8 rounded-lg shadow-lg">
-                    <h3 class="text-xl font-bold mb-6 text-center text-pinky">Kirim Hadiah</h3>
-                    
-                    <div class="gift-box mb-6 p-4 border border-[#d4a4a0] rounded-lg">
-                        <h4 class="font-bold mb-3 text-gray-800">Transfer Bank</h4>
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="text-gray-700">Bank BCA</span>
-                            <button onclick="copyToClipboard('5050276645')" class="bg-pink-100 hover:bg-pink-200 text-pinky py-1 px-3 rounded text-sm">
-                                Salin
-                            </button>
-                        </div>
-                        <div class="flex justify-between items-center bg-gray-50 p-2 rounded text-sm">
-                            <span class="font-mono">5050276645</span>
-                            <span class="text-sm text-gray-600">a.n Alfatah Hidayat</span>
-                        </div>
-                    </div>
-                    
-                    <div class="gift-box p-4 border border-[#d4a4a0] rounded-lg">
-                        <h4 class="font-bold mb-3 text-gray-800">Alamat Pengiriman</h4>
-                        <div class="mb-3">
-                            <button onclick="copyToClipboard('Jl. Bunga Melati Gg. Melati 1 No.24, RT.8/RW.2, Cipete Sel., Kec. Cilandak, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12410')" class="bg-pink-100 hover:bg-pink-200 text-pinky py-1 px-3 rounded text-sm mb-2">
-                                Salin Alamat
-                            </button>
-                        </div>
-                        <div class="bg-gray-50 p-3 rounded text-sm">
-                            <p class="text-gray-700">Jl. Bunga Melati Gg. Bunga Melati 1 No. 24, RT 08 RW 02</p>
-                            <p class="text-gray-700">Kel. Cipete Selatan, Kec. Cilandak</p>
-                            <p class="text-gray-700">Jakarta Selatan 12410</p>
-                            <p class="text-gray-700">HP: 085695470136 (Enny Frisilia)</p>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-8 text-center">
-                        <p class="text-gray-600 italic">"Doa dan kehadiran Anda adalah hadiah terbaik bagi kami. Namun jika Anda ingin memberikan hadiah berupa uang, kami sangat berterima kasih."</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Closing Section -->
-    <section class="floral-pattern py-20 bg-[length:35%] bg-no-repeat section-animate relative overflow-hidden">
-        <div class="container mx-auto px-4 text-center relative z-10">
-            <h2 class="text-3xl font-bold mb-8 text-pinky font-sacrramento">Terima Kasih</h2>
-            <p class="text-gray-700 max-w-2xl mx-auto mb-12">
-                Atas segala doa, restu dan kebahagiaan yang diberikan, kami mengucapkan terima kasih yang sebesar-besarnya. Semoga Allah SWT memberkahi hari bahagia kami dan membalas segala kebaikan Anda.
-            </p>
-            <div class="couple-name text-4xl text-pinky mb-3 transform hover:scale-105 transition-transform duration-500">
-                <span class="drop-shadow-lg">Alfatah & Anggreyni</span>
-            </div>
-            <p class="text-gray-600 bg-opacity-70 py-2 px-6 inline-block">Beserta Keluarga</p>
-        </div>
+        </section>
         
-        <!-- Floating hearts animation -->
-        <div class="floating-hearts-container">
-            <div class="heart"></div>
-            <div class="heart"></div>
-            <div class="heart"></div>
-            <div class="heart"></div>
-            <div class="heart"></div>
+        <!-- Couple Info Section -->
+        <section class="hidden py-[30%] bg-center bg-no-repeat section-animate overflow-hidden">
+            <div class="top-ornament">
+                <img src="./assets/top-ornament.png" alt="top-ornament">
+            </div>
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="font-arabic py-4 m-0 text-3xl font-bold">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</h2>
+                <h2 class="font-esthetic py-4 m-0 text-lg">Assalamualaikum Warahmatullahi Wabarakatuh</h2>
+                <p class="pb-4 px-2 m-0">Tanpa mengurangi rasa hormat, kami mengundang Anda untuk berkenan menghadiri acara pernikahan kami:</p>
+                <div class="flex flex-col justify-center items-center gap-12">
+                    <div class="couple-card transform hover:scale-105 transition-transform duration-300 slide-right">
+                        <div class="w-[60%] h-[60%] mx-auto rounded-full overflow-hidden border-4 border-[#d4a4a0] shadow-lg mb-6">
+                            <img src="./assets/man.png" 
+                                alt="John" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="text-3xl font-bold text-pinky mb-2 couple-name">Alfatah Hidayat</h3>
+                        <p class="text-gray-600">Putra dari Bpk. Tri Yasin (Alm) & Ibu Soliah</p>
+                    </div>
+
+                    <!-- <div class="text-5xl text-pinky hidden md:block">❤️</div> -->
+
+                    <div class="couple-card transform hover:scale-105 transition-transform duration-300 slide-left">
+                        <div class="w-[60%] h-[60%] mx-auto rounded-full overflow-hidden border-4 border-[#d4a4a0] shadow-lg mb-6">
+                            <img src="./assets/woman.png" 
+                                alt="Jane" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="text-3xl font-bold text-pinky mb-2 couple-name">Anggreyni F. Kordak</h3>
+                        <p class="text-gray-600">Putri dari Bpk. Son Refly Kordak & Ibu Fruli N Warong</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom-ornament overflow-hidden">
+                <img src="./assets/bottom-ornament.png" class="w-screen" alt="bottom-ornament">
+            </div>
+        </section>
+
+        <!-- Quran Verse Section -->
+        <section class="hidden py-20 bg-center bg-no-repeat section-animate overflow-hidden">
+            <div class="container mx-auto px-4">
+                <div class="max-w-3xl mx-auto bg-white bg-opacity-90 p-8 rounded-lg shadow-lg text-center">
+                    <h2 class="text-lg font-bold mb-4 text-gray-800">Firman Allah Tentang Pernikahan</h2>
+                    <div class="arabic-text text-2xl mb-4 text-center font-arabic" dir="rtl">
+                        وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً
+                    </div>
+                    <p class="text-sm mb-4 text-gray-700">
+                        "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu istri-istri dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya diantaramu rasa kasih dan sayang." 
+                        <br>(QS. Ar-Rum: 21)
+                    </p>
+                    <div class="flex justify-center gap-4">
+                        <img src="./assets/man.png" alt="Pria muslim berdoa dengan khusyuk" class="rounded-full w-24 h-24 object-cover border-4 border-[#d4a4a0]">
+                        <img src="./assets/woman.png" alt="Wanita muslimah berdoa dengan khusyuk" class="rounded-full w-24 h-24 object-cover border-4 border-[#d4a4a0]">
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="bottom-ornament overflow-hidden">
+                <img src="./bottom-ornament.png" class="w-screen" alt="bottom-ornament">
+            </div> -->
+        </section>
+        
+        <!-- Event Details Section -->
+        <section class="hidden py-20 bg-center bg-no-repeat section-animate overflow-hidden">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-4 text-gray-800 font-sacrramento">Momen Bahagia</h2>
+                <p class="py-2 mb-4 text-center">Dengan memohon rahmat dan ridho Allah Subhanahu Wa Ta'ala, insyaAllah kami akan menyelenggarakan acara:</p>
+                <div class="flex flex-col items-center justify-center gap-8">
+                    <div class="bg-[#ffc6c6]/30 p-8 rounded-lg shadow-md text-center flex-1 max-w-md">
+                        <h3 class="text-lg font-bold mb-4 text-pinky">Akad Nikah</h3>
+                        <div class="mb-10">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 mx-auto text-pinky" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                            <p class="mt-2">Jumat, 19 September 2025</p>
+                            <p class="">09:00 - 11:00 WIB</p>
+                        </div>
+                        <div class="mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 mx-auto text-pinky" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <p class="mt-2">KUA Padamara</p>
+                            <p class="text-sm">Jalan Raya Padamara No. 30, Bojanegara, Padamara, Dusun 3, Purbalingga Lor, Kec. Purbalingga, Kabupaten Purbalingga, Jawa Tengah 53372</p>
+                        </div>
+                        <button class="mt-4 bg-[#e27e7e] hover:bg-[#e78e8e] text-white font-bold text-sm py-2 px-4 rounded" onclick="openMap('akad')">Lihat Peta</button>
+                    </div>
+                    <div class="bg-[#ffc6c6]/30 p-8 rounded-lg shadow-md text-center flex-1 max-w-md">
+                        <h3 class="text-lg font-bold mb-4 text-pinky">Resepsi</h3>
+                        <div class="mb-10">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 mx-auto text-pinky" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                            <p class="mt-2">Minggu, 28 September 2025</p>
+                            <p class="">14:00 - 16:00 WIB</p>
+                        </div>
+                        <div class="mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 mx-auto text-pinky" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <p class="mt-2">Kampung Kecil Sawangan</p>
+                            <p class="text-sm">Blk. DEF, Ruko Pancoran Mas, Jl. Raya Sawangan No.81, RT.1/RW.9, Mampang, Kec. Pancoran Mas, Kota Depok, Jawa Barat 16511</p>
+                        </div>
+                        <button class="mt-4 bg-[#e27e7e] text-sm hover:bg-[#e78e8e] text-white font-bold py-2 px-4 rounded" onclick="openMap('resepsi')">Lihat Peta</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- RSVP Section -->
+        <section class="hidden py-20 bg-center bg-no-repeat section-animate overflow-hidden">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-sacrramento font-bold text-center mb-12 text-gray-800">Ucapan & Doa</h2>
+                <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+                    <form id="rsvpForm" class="text-sm mb-8 transition-all duration-500 shadow-xl bg-[#ffc6c6]/30 p-6 rounded-xl">
+                        <div class="mb-4">
+                            <label class="block text-gray-700 font-bold mb-2" for="name">Nama Anda</label>
+                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" type="text" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 font-bold mb-2">Kehadiran</label>
+                            <div class="flex gap-4">
+                                <label class="inline-flex items-center">
+                                    <input type="radio" name="attendance" value=true checked class="form-radio text-pinky">
+                                    <span class="ml-2">Hadir</span>
+                                </label>
+                                <label class="inline-flex items-center">
+                                    <input type="radio" name="attendance" value=false class="form-radio text-pinky">
+                                    <span class="ml-2">Tidak Hadir</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-gray-700 font-bold mb-2" for="message">Pesan/Ucapan</label>
+                            <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="message" rows="3"></textarea>
+                        </div>
+                        <div class="flex justify-center">
+                            <button type="submit" class="btn-primary bg-[#e27e7e] hover:bg-[#e78e8e] text-white font-bold py-2 px-6 rounded-full text-sm">Kirim Konfirmasi</button>
+                        </div>
+                    </form>
+                    
+                    <div id="rsvpSuccess" class="hidden bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-6">
+                        <strong class="font-bold">Terima kasih!</strong>
+                        <span class="block sm:inline">Konfirmasi kehadiran Anda sudah kami terima.</span>
+                    </div>
+                    
+                    <div class="rsvp-list-section mt-12">
+                        <h3 class="text-xl font-bold mb-4 text-center text-gray-800">Daftar Konfirmasi</h3>
+                        <div id="rsvpList" class="mb-4"></div>
+                        <div class="flex justify-between items-center">
+                            <button id="prevPage" class="bg-gray-300 hover:bg-gray-400 text-gray-800 text-sm py-2 px-4 rounded-l">
+                                Prev
+                            </button>
+                            <div id="pageInfo" class="text-gray-700"></div>
+                            <button id="nextPage" class="bg-gray-300 hover:bg-gray-400 text-gray-800 text-sm py-2 px-4 rounded-r">
+                                Next
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Gift Section -->
+        <section class="hidden py-20 bg-center bg-no-repeat section-animate overflow-hidden">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-sacrramento font-bold text-center mb-12 text-gray-800">Hadiah</h2>
+                <div class="max-w-2xl mx-auto">
+                    <div class="bg-white p-8 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-bold mb-6 text-center text-pinky">Kirim Hadiah</h3>
+                        
+                        <div class="gift-box mb-6 p-4 border border-[#d4a4a0] rounded-lg">
+                            <h4 class="font-bold mb-3 text-gray-800">Transfer Bank</h4>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-700">Bank BCA</span>
+                                <button onclick="copyToClipboard('5050276645')" class="bg-pink-100 hover:bg-pink-200 text-pinky py-1 px-3 rounded text-sm">
+                                    Salin
+                                </button>
+                            </div>
+                            <div class="flex justify-between items-center bg-gray-50 p-2 rounded text-sm">
+                                <span class="font-mono">5050276645</span>
+                                <span class="text-sm text-gray-600">a.n Alfatah Hidayat</span>
+                            </div>
+                        </div>
+                        
+                        <div class="gift-box p-4 border border-[#d4a4a0] rounded-lg">
+                            <h4 class="font-bold mb-3 text-gray-800">Alamat Pengiriman</h4>
+                            <div class="mb-3">
+                                <button onclick="copyToClipboard('Jl. Bunga Melati Gg. Melati 1 No.24, RT.8/RW.2, Cipete Sel., Kec. Cilandak, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12410')" class="bg-pink-100 hover:bg-pink-200 text-pinky py-1 px-3 rounded text-sm mb-2">
+                                    Salin Alamat
+                                </button>
+                            </div>
+                            <div class="bg-gray-50 p-3 rounded text-sm">
+                                <p class="text-gray-700">Jl. Bunga Melati Gg. Bunga Melati 1 No. 24, RT 08 RW 02</p>
+                                <p class="text-gray-700">Kel. Cipete Selatan, Kec. Cilandak</p>
+                                <p class="text-gray-700">Jakarta Selatan 12410</p>
+                                <p class="text-gray-700">HP: 085695470136 (Enny Frisilia)</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 text-center">
+                            <p class="text-gray-600 italic">"Doa dan kehadiran Anda adalah hadiah terbaik bagi kami. Namun jika Anda ingin memberikan hadiah berupa uang, kami sangat berterima kasih."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Closing Section -->
+        <section class="hidden py-20 bg-[length:35%] bg-no-repeat section-animate relative overflow-hidden">
+            <div class="absolute z-[-1] bottom-0 floral-pattern w-[30%] h-[30%]"></div>
+            <div class="container mx-auto px-4 text-center relative z-10">
+                <h2 class="text-3xl font-bold mb-8 text-pinky font-sacrramento">Terima Kasih</h2>
+                <p class="text-gray-700 max-w-2xl mx-auto mb-12">
+                    Atas segala doa, restu dan kebahagiaan yang diberikan, kami mengucapkan terima kasih yang sebesar-besarnya. Semoga Allah SWT memberkahi hari bahagia kami dan membalas segala kebaikan Anda.
+                </p>
+                <div class="couple-name text-4xl text-pinky mb-3 transform hover:scale-105 transition-transform duration-500">
+                    <span class="drop-shadow-lg">Alfatah & Anggreyni</span>
+                </div>
+                <p class="text-gray-600 bg-opacity-70 py-2 px-6 inline-block">Beserta Keluarga</p>
+            </div>
+            
+            <!-- Floating hearts animation -->
+            <div class="floating-hearts-container z-[-2]">
+                <div class="heart"></div>
+                <div class="heart"></div>
+                <div class="heart"></div>
+                <div class="heart"></div>
+                <div class="heart"></div>
+            </div>
+        </section>
+
+        <!-- Music Player Balloon -->
+        <div id="music-balloon" class="hidden music-balloon">
+            <audio id="background-music" loop>
+                <source src="./assets/music-bg.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <div class="vinyl-record">
+                <!-- <div class="record-img"></div> -->
+            </div>
+            <button id="music-toggle" class="music-toggle-button">
+                <svg id="play-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197 2.132A1 1 0 0110 13.82V10.18a1 1 0 011.555-.832l3.197 2.132a1 1 0 010 1.664z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <svg id="pause-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+            </button>
         </div>
-    </section>
+    </div>
+    <script src="./js/script.js" type="text/javascript"></script>
 </body>
 </html>
