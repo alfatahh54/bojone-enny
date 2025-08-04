@@ -19,7 +19,7 @@
 <body class="overflow-x-hidden flex flex-col md:flex-row w-screen">
     <section id="invitation-section" class="hero-section md:sticky top-0 grow h-screen flex flex-col justify-center items-center text-center text-white bg-cover">
         <div class="w-full absolute z-[-1] top-0 h-full bg-white" >
-            <img src="./assets/bg-home.jpg" alt="">
+            <img src="./assets/bg-home.jpg" alt="bg-home" class="w-full">
         </div>
         <h1 class="text-3xl mb-4 font-sacrramento text-pinky text-bold">Wedding Invitation</h1>
         <img src="./assets/A.gif" alt="logo" class="w-[50%] max-w-[240px] mb-4">
@@ -274,7 +274,7 @@
         
         <!-- Closing Section -->
         <section class="hidden py-20 bg-[length:35%] bg-no-repeat section-animate relative overflow-hidden">
-            <div class="absolute z-[-1] bottom-0 floral-pattern w-[30%] h-[30%]"></div>
+            <div class="absolute z-[-1] bottom-0 floral-pattern w-[30%] aspect-square"></div>
             <div class="container mx-auto px-4 text-center relative z-10">
                 <h2 class="text-3xl font-bold mb-8 text-pinky font-sacrramento">Terima Kasih</h2>
                 <p class="text-gray-700 max-w-2xl mx-auto mb-12">
@@ -298,7 +298,7 @@
 
         <!-- Music Player Balloon -->
         <div id="music-balloon" class="hidden music-balloon">
-            <audio id="background-music" loop>
+            <audio id="background-music" autoplay loop>
                 <source src="./assets/music-bg.mp3" type="audio/mpeg">
                 Your browser does not support the audio element.
             </audio>
@@ -314,6 +314,14 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
             </button>
+        </div>
+        <div id="toast" class="hidden w-full fixed top-4 text-white flex justify-center transition-opacity duration-300">
+            <div class="flex bg-green-500 rounded-md shadow-lg px-4 py-2 items-center">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span id="toast-message">Nomor rekening berhasil disalin</span>
+            </div>
         </div>
     </div>
     <script src="./js/script.js" type="text/javascript"></script>

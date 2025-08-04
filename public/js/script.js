@@ -124,6 +124,19 @@ function updatePaginationControls(totalItems, totalPages) {
     document.getElementById('nextPage').disabled = currentPage === totalPages;
 }
 
+function showToast(message) {
+    const toast = document.getElementById('toast');
+    const toastMsg = document.getElementById('toast-message');
+    toastMsg.textContent = message;
+    toast.classList.remove('hidden');
+    toast.classList.add('flex');
+    
+    setTimeout(() => {
+        toast.classList.add('hidden');
+        toast.classList.remove('flex');
+    }, 3000);
+}
+
 document.getElementById('prevPage').addEventListener('click', () => {
     if (currentPage > 1) {
         currentPage--;
@@ -141,7 +154,7 @@ document.getElementById('nextPage').addEventListener('click', () => {
 // Copy to clipboard function
 function copyToClipboard(text) {
     navigator.clipboard.writeText(text).then(() => {
-        alert('Tersalin ke clipboard!');
+        showToast('Tersalin ke clipboard!');
     }).catch(err => {
         console.error('Gagal menyalin: ', err);
     });
@@ -267,8 +280,6 @@ document.head.appendChild(style);
 
 // Floating hearts click animation
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM loaded');
-    
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
@@ -313,17 +324,18 @@ document.addEventListener('DOMContentLoaded', function() {
         guestNameElement.textContent = 'Tamu Undangan'; // Default if 'to' parameter is not present
     }
     if(screen.width >= 768){
-        console.log('screen width >= 768');
-        
         openInvitationButton.classList.add('hidden');   
         hiddenSections.forEach(section => {
             section.classList.remove('hidden'); // Show all other sections
         });
-        isPlaying = true;
-        playIcon.classList.add('hidden');
-        pauseIcon.classList.remove('hidden');
-        musicBalloon.classList.add('playing');
+        // playIcon.classList.add('hidden');
+        // pauseIcon.classList.remove('hidden');
+        
         musicBalloon.classList.remove('hidden');
+        // backgroundMusic.play().catch(error => {
+        //     console.error("Autoplay prevented:", error);
+        //     // Optionally, show a message to the user to click to play music
+        // });
         window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
         openInvitationButton.classList.remove('hidden');
