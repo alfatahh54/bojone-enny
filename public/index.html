@@ -13,146 +13,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic&display=swap">
-    <style>
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes floating {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-
-        .scroll-down-btn {
-            animation: floating 3s ease-in-out infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        .top-ornament {
-            position: absolute;
-            overflow: hidden;
-            width: 100%;   
-            z-index: -1;
-            top:0;
-        }
-        .bottom-ornament {
-            position: absolute;
-            width: 100%;
-            overflow: hidden;
-            bottom: -2%;
-            z-index: -1; 
-        } 
-
-        .bottom-ornament img {
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        .top-ornament img {
-            animation: pulse 2s ease-in-out infinite;
-        }
-        
-        body {
-            font-family: 'Josefin Sans', sans-serif;
-            background-color: #f8f4ef;
-            background-image: url('https://i.pinimg.com/originals/5c/8f/4b/5c8f4b8f3b5840a2c9f6b2b8c2d3d3e5.jpg');
-            background-size: 300px;
-            background-attachment: fixed;
-            color: #555;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow-x: hidden;
-        }
-        .floating-heart {
-            position: absolute;
-            background: url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/tiny-heart.png') no-repeat;
-            width: 20px;
-            height: 20px;
-            animation: float 10s linear infinite;
-            opacity: 0.7;
-            z-index: -1;
-        }
-        @keyframes float {
-            0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.7; }
-            90% { opacity: 0.7; }
-            100% { transform: translateY(-100vh) translateX(50px) rotate(360deg); opacity: 0; }
-        }
-        
-        .section-animate {
-            animation: fadeIn 1s ease-out forwards;
-        }
-        
-        .hero-section {
-            background: linear-gradient(135deg, rgb(255 156 156 / 11%), rgb(243 179 179 / 11%));
-            background-blend-mode: overlay;
-            position: relative;
-            overflow: hidden;
-        }
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            /* background: url('https://i.pinimg.com/originals/9a/7b/71/9a7b71b86d8b8c8c6a6a3a7a2a2a2a7.jpg') center/cover; */
-            animation: floatingHearts 30s linear infinite;
-            opacity: 0.2;
-            display: none;
-        }
-        @keyframes floatingHearts {
-            0% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-50px) rotate(180deg); }
-            100% { transform: translateY(0) rotate(360deg); }
-        }
-        
-        .floral-pattern {
-            background-image: url('https://img.pikbest.com/backgrounds/20241211/watercolor-floral-corner-design-pink-roses-delicate-green-leaves-botanical-illustration-_11238116.jpg!sw800');
-            background-size: cover;
-            background-position: left bottom;
-            background-attachment: fixed;
-        }
-
-        .font-sacrramento {
-            font-family: 'Sacramento', cursive;
-        }
-        
-        .couple-name {
-            font-family: 'Sacramento', cursive;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
-        
-        .gift-box {
-            transition: all 0.3s ease;
-        }
-        
-        .gift-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-        
-        .btn-primary {
-            transition: all 0.3s ease;
-            animation: pulse 2s infinite;
-            background-color: #d0608e;
-            box-shadow: 0 4px 15px rgba(208, 96, 142, 0.3);
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(208, 96, 142, 0.4);
-            background-color: #c04b7c;
-        }
-        .text-pinky{
-            color: #ff9999;
-        }
-    </style>
+    <link rel="stylesheet" href="./css/style.css" type="text/css">
+    <script src="./js/script.js" type="text/javascript"></script>
 </head>
 <body class="overflow-x-hidden">
     <!-- Hero Section -->
@@ -161,7 +23,7 @@
         <div class="relative z-10 section-animate">
             <h1 class="text-2xl font-bold text-pinky font-sacrramento">The Wedding Of</h1>
             <div class="flex justify-center items-center">
-                <img src="./A.gif" alt="logo" class="w-[85%]">
+                <img src="./assets/A.gif" alt="logo" class="w-[85%]">
             </div>
             <div class="couple-name text-4xl text-pinky my-4">
                 <!-- <img src="./bg-couple-name.png" alt="bg-couple-name" class="absolute"> -->
@@ -191,7 +53,7 @@
     <!-- Couple Info Section -->
     <section class="py-[30%] bg-[url('https://svgshare.com/i/11wG.svg')] bg-[length:300px] bg-center bg-no-repeat section-animate overflow-hidden">
         <div class="top-ornament">
-            <img src="./top-ornament.png" alt="top-ornament">
+            <img src="./assets/top-ornament.png" alt="top-ornament">
         </div>
         <div class="container mx-auto px-4 text-center">
             <h2 class="font-arabic py-4 m-0 text-3xl font-bold">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</h2>
@@ -200,7 +62,7 @@
             <div class="flex flex-col md:flex-row justify-center items-center gap-12">
                 <div class="couple-card transform hover:scale-105 transition-transform duration-300">
                     <div class="w-[60%] h-[60%] mx-auto rounded-full overflow-hidden border-4 border-[#d4a4a0] shadow-lg mb-6">
-                        <img src="./man.png" 
+                        <img src="./assets/man.png" 
                              alt="John" class="w-full h-full object-cover">
                     </div>
                     <h3 class="text-3xl font-bold text-pinky mb-2 couple-name">Alfatah Hidayat</h3>
@@ -211,7 +73,7 @@
 
                 <div class="couple-card transform hover:scale-105 transition-transform duration-300">
                     <div class="w-[60%] h-[60%] mx-auto rounded-full overflow-hidden border-4 border-[#d4a4a0] shadow-lg mb-6">
-                        <img src="./woman.png" 
+                        <img src="./assets/woman.png" 
                              alt="Jane" class="w-full h-full object-cover">
                     </div>
                     <h3 class="text-3xl font-bold text-pinky mb-2 couple-name">Anggreyni F. Kordak</h3>
@@ -220,7 +82,7 @@
             </div>
         </div>
         <div class="bottom-ornament overflow-hidden">
-            <img src="./bottom-ornament.png" class="w-screen" alt="bottom-ornament">
+            <img src="./assets/bottom-ornament.png" class="w-screen" alt="bottom-ornament">
         </div>
     </section>
 
@@ -237,8 +99,8 @@
                     <br>(QS. Ar-Rum: 21)
                 </p>
                 <div class="flex justify-center gap-4">
-                    <img src="./man.png" alt="Pria muslim berdoa dengan khusyuk" class="rounded-full w-24 h-24 object-cover border-4 border-[#d4a4a0]">
-                    <img src="./woman.png" alt="Wanita muslimah berdoa dengan khusyuk" class="rounded-full w-24 h-24 object-cover border-4 border-[#d4a4a0]">
+                    <img src="./assets/man.png" alt="Pria muslim berdoa dengan khusyuk" class="rounded-full w-24 h-24 object-cover border-4 border-[#d4a4a0]">
+                    <img src="./assets/woman.png" alt="Wanita muslimah berdoa dengan khusyuk" class="rounded-full w-24 h-24 object-cover border-4 border-[#d4a4a0]">
                 </div>
             </div>
         </div>
@@ -416,337 +278,5 @@
             <div class="heart"></div>
         </div>
     </section>
-
-    <style>
-        .floating-hearts-container {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            overflow: hidden;
-        }
-        
-        .heart {
-            position: absolute;
-            width: 60px;
-            height: 60px;
-            background-image: url('https://e7.pngegg.com/pngimages/891/246/png-clipart-national-cherry-blossom-festival-flower-heart-flower.png');
-            background-size: contain;
-            background-color: transparent;
-            background-repeat: no-repeat;
-            opacity: 0.8;
-            animation: float-up 8s linear infinite;
-        }
-        
-        .heart:nth-child(1) {
-            left: 10%;
-            top: 90%;
-            animation-delay: 0s;
-            animation-duration: 10s;
-        }
-        
-        .heart:nth-child(2) {
-            left: 25%;
-            top: 80%;
-            animation-delay: 2s;
-            animation-duration: 12s;
-        }
-        
-        .heart:nth-child(3) {
-            left: 75%;
-            top: 85%;
-            animation-delay: 4s;
-        }
-        
-        .heart:nth-child(4) {
-            left: 50%;
-            top: 95%;
-            animation-delay: 1s;
-            animation-duration: 15s;
-        }
-        
-        .heart:nth-child(5) {
-            left: 90%;
-            top: 88%;
-            animation-delay: 3s;
-        }
-        
-        @keyframes float-up {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.8;
-            }
-            90% {
-                opacity: 0.8;
-            }
-            100% {
-                transform: translateY(-600%) rotate(360deg);
-                opacity: 0;
-            }
-        }
-    </style>
-    
-    <script>
-        // Countdown Timer
-        function updateCountdown() {
-            const weddingDate = new Date('2025-09-19T14:00:00').getTime();
-            const now = new Date().getTime();
-            const distance = weddingDate - now;
-            
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            
-            document.getElementById('days').textContent = days.toString().padStart(2, '0');
-            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-        }
-        
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-        
-        // Scroll to sections
-        document.querySelector('.scroll-down-btn').addEventListener('click', () => {
-            document.querySelector('section:not(.hero-section)').scrollIntoView({ behavior: 'smooth' });
-        });
-        
-        // RSVP Form Handling
-        document.getElementById('rsvpForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('name').value;
-            const attending = document.querySelector('input[name="attendance"]:checked').value;
-            const message = document.getElementById('message').value;
-            
-            const rsvpData = {
-                name,
-                attending,
-                message,
-                timestamp: new Date().toISOString()
-            };
-            
-            // In production, this would be an API call to your ExpressJS backend
-            fetch('/api/rsvp', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(rsvpData)
-            })
-            .then(response => {
-                if (response.ok) {
-                    document.getElementById('rsvpSuccess').classList.remove('hidden');
-                    document.getElementById('rsvpForm').reset();
-                    setTimeout(() => {
-                        document.getElementById('rsvpSuccess').classList.add('hidden');
-                    }, 3000);
-                    
-                    // Refresh RSVP list
-                    loadRSVPs();
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        });
-        
-        // RSVP List Pagination
-        let currentPage = 1;
-        const itemsPerPage = 5;
-        let totalPages = 1
-        function loadRSVPs(page=1) {
-            // In production, this would be an API call to your ExpressJS backend
-            fetch(`/api/rsvp?page=${page}&limit=${itemsPerPage}`)
-            .then(response => response.json())
-            .then(data => {
-                totalPages = data.totalPages
-                
-                renderRSVPList(data.items);
-                updatePaginationControls(data.total, totalPages);
-            });
-        }
-        function timeAgo(date) {
-            const seconds = Math.floor((new Date() - date) / 1000);
-            
-            let interval = Math.floor(seconds / 31536000);
-            if (interval >= 1) return interval + " tahun yang lalu";
-            interval = Math.floor(seconds / 2592000);
-            if (interval >= 1) return interval + " bulan yang lalu";
-            interval = Math.floor(seconds / 86400);
-            if (interval >= 1) return interval + " hari yang lalu";
-            interval = Math.floor(seconds / 3600);
-            if (interval >= 1) return interval + " jam yang lalu";
-            interval = Math.floor(seconds / 60);
-            if (interval >= 1) return interval + " menit yang lalu";
-            return "Baru saja";
-        }
-        function renderRSVPList(items) {
-            const rsvpList = document.getElementById('rsvpList');
-            rsvpList.innerHTML = '';
-            
-            if (items.length === 0) {
-                rsvpList.innerHTML = '<p class="text-center text-gray-500">Belum ada konfirmasi kehadiran.</p>';
-                return;
-            }
-            
-            items.forEach(item => {
-                const rsvpItem = document.createElement('div');
-                rsvpItem.className = 'mb-4 p-4 bg-gray-50 rounded-lg border border-gray-200';
-                rsvpItem.innerHTML = `
-                    <div class="flex justify-between mb-2">
-                        <span class="font-bold text-gray-800">${item.name}</span>
-                        <span class="text-sm ${item.attending ? 'text-green-600' : 'text-red-600'}">
-                            ${item.attending  ? 'Hadir' : 'Tidak Hadir'}
-                        </span>
-                    </div>
-                    ${item.message ? `<p class="text-gray-700 italic">"${item.message}"</p>` : ''}
-                    <p class="text-xs text-gray-500 mt-2">${timeAgo(new Date(item.createdAt))}</p>
-                `;
-                rsvpList.appendChild(rsvpItem);
-            });
-        }
-        
-        function updatePaginationControls(totalItems, totalPages) {
-            const pageInfo = document.getElementById('pageInfo');
-            pageInfo.textContent = `Halaman ${currentPage} dari ${totalPages} (${totalItems} total)`;
-            
-            document.getElementById('prevPage').disabled = currentPage === 1;
-            document.getElementById('nextPage').disabled = currentPage === totalPages;
-        }
-        
-        document.getElementById('prevPage').addEventListener('click', () => {
-            if (currentPage > 1) {
-                currentPage--;
-                loadRSVPs(currentPage);
-            }
-        });
-        
-        document.getElementById('nextPage').addEventListener('click', () => {
-            if (currentPage < totalPages) {
-                currentPage++;
-                loadRSVPs(currentPage);
-            }
-        });
-        
-        // Copy to clipboard function
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(() => {
-                alert('Tersalin ke clipboard!');
-            }).catch(err => {
-                console.error('Gagal menyalin: ', err);
-            });
-        }
-        
-        // Open Map Function
-        function openMap(type) {
-            let url;
-            
-            if (type === 'akad') {
-                // Replace with actual Google Maps URL for Akad location
-                url = 'https://maps.app.goo.gl/GTKtb3rDwJF5Fe6k6';
-            } else {
-                // Replace with actual Google Maps URL for Resepsi location
-                url = 'https://maps.app.goo.gl/PFNyKZLTfTpZz3fD8';
-            }
-            
-            window.open(url, '_blank');
-        }
-        
-        // Calendar Save Function
-        document.querySelector('.btn-primary').addEventListener('click', () => {
-            const weddingDate = new Date('2023-06-10T08:00:00');
-            const event = {
-                title: 'Pernikahan John & Jane',
-                start: weddingDate,
-                end: new Date(weddingDate.getTime() + 4 * 60 * 60 * 1000),
-                location: 'Masjid Al-Falah, Jakarta',
-                description: 'Acara pernikahan John & Jane. Mohon doa restunya.'
-            };
-            
-            // For Google Calendar
-            const googleCalUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.title)}&dates=${formatDateForGoogleCal(weddingDate)}/${formatDateForGoogleCal(event.end)}&details=${encodeURIComponent(event.description)}&location=${encodeURIComponent(event.location)}`;
-            
-            window.open(googleCalUrl, '_blank');
-        });
-        
-        function formatDateForGoogleCal(date) {
-            return date.toISOString().replace(/-|:|\.\d+/g, '');
-        }
-        
-        // Floating hearts click animation
-        document.addEventListener('DOMContentLoaded', function() {
-            const footer = document.querySelector('.floral-pattern');
-            
-            footer.addEventListener('click', function(e) {
-                if (e.target === footer) {
-                    createHeart(e.clientX, e.clientY);
-                }
-            });
-            
-            function createHeart(x, y) {
-                const heart = document.createElement('div');
-                heart.classList.add('heart-click');
-                heart.style.left = x + 'px';
-                heart.style.top = y + 'px';
-                
-                document.body.appendChild(heart);
-                
-                setTimeout(() => {
-                    heart.remove();
-                }, 1000);
-            }
-            
-            // Original floating hearts
-            const count = 15;
-            for (let i = 0; i < count; i++) {
-                const heart = document.createElement('div');
-                heart.className = 'floating-heart';
-                heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.top = Math.random() * 100 + 'vh';
-                heart.style.animationDuration = 5 + Math.random() * 15 + 's';
-                heart.style.animationDelay = Math.random() * 5 + 's';
-                document.body.appendChild(heart);
-            }
-            // Initial load
-            loadRSVPs();
-            createHeart();
-        });
-
-        // Add CSS for click hearts
-        const style = document.createElement('style');
-        style.textContent = `
-            .heart-click {
-                position: absolute;
-                width: 30px;
-                height: 30px;
-                background-image: url('https://i.imgur.com/eDpmztW.png');
-                background-size: contain;
-                background-repeat: no-repeat;
-                animation: heartClick 1s ease-out forwards;
-                transform: translate(-50%, -50%);
-                z-index: 100;
-            }
-            
-            @keyframes heartClick {
-                0% {
-                    transform: translate(-50%, -50%) scale(0.5);
-                    opacity: 0;
-                }
-                50% {
-                    opacity: 1;
-                }
-                100% {
-                    transform: translate(-50%, -150%) scale(1.2);
-                    opacity: 0;
-                }
-            }
-        `;
-        document.head.appendChild(style);
-    </script>
 </body>
 </html>
