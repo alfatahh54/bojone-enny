@@ -163,8 +163,27 @@ document.addEventListener('DOMContentLoaded', function() {
             scanResult.classList.add('hidden');
         }
     });
+
+    // Switch camera
+    document.getElementById('switch-camera').addEventListener('click', function() {
+        if (cameras.length < 2) return;
+        
+        currentCameraIndex = (currentCameraIndex + 1) % cameras.length;
+        scanner.stop().then(() => {
+            scanner.start(cameras[currentCameraIndex]);
+        });
+        
+        // Show camera name in status temporarily
+        const cameraName = cameras[currentCameraIndex].name || `Camera ${currentCameraIndex + 1}`;
+        scannerStatus.textContent = `Aktif (${cameraName})`;
+        setTimeout(() => {
+            scannerStatus.textContent = 'Aktif';
+        }, 2000);
+    });
     
     // Initialize scanner status
     scannerStatus.textContent = 'Tidak Aktif';
     scannerStatus.className = 'px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800';
+
+    
 });
