@@ -122,6 +122,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize attendance table
     updateAttendanceTable();
     let cameraData = []
+    let currentCameraIndex = 0;
     // Start scanner
     startBtn.addEventListener('click', function() {
         initScanner();
