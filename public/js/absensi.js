@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const scanResult = document.getElementById('scan-result');
     const attendanceList = document.getElementById('attendance-list');
     const clearDataBtn = document.getElementById('clear-data');
+    const switchCameraBtn = document.getElementById('switch-camera');   
     
     let attendanceData = JSON.parse(localStorage.getItem('attendanceData')) || [];
     
@@ -120,16 +121,22 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize attendance table
     updateAttendanceTable();
-    
+    let cameraData = []
     // Start scanner
     startBtn.addEventListener('click', function() {
         initScanner();
         
         Instascan.Camera.getCameras().then(function(cameras) {
+            cameraData = cameras
+            if (cameras.length < 2) {
+                switchCameraBtn.disabled = true;
+                switchCameraBtn.style.display = 'none';
+            }
             if (cameras.length > 0) {
                 scanner.start(cameras[0]);
                 startBtn.disabled = true;
                 stopBtn.disabled = false;
+                switchCameraBtn.disabled = false;
                 scannerStatus.textContent = 'Aktif';
                 scannerStatus.className = 'px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800';
                 scanAnimation.style.display = 'block';
@@ -148,6 +155,7 @@ document.addEventListener('DOMContentLoaded', function() {
             scanner.stop();
             startBtn.disabled = false;
             stopBtn.disabled = true;
+            switchCameraBtn.disabled = true;
             scannerStatus.textContent = 'Tidak Aktif';
             scannerStatus.className = 'px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800';
             scanAnimation.style.display = 'none';
@@ -166,15 +174,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Switch camera
     document.getElementById('switch-camera').addEventListener('click', function() {
-        if (cameras.length < 2) return;
+        if (cameraData.length < 2) return;
         
-        currentCameraIndex = (currentCameraIndex + 1) % cameras.length;
+        currentCameraIndex = (currentCameraIndex + 1) % cameraData.length;
         scanner.stop().then(() => {
-            scanner.start(cameras[currentCameraIndex]);
+            scanner.start(cameraData[currentCameraIndex]);
         });
         
         // Show camera name in status temporarily
-        const cameraName = cameras[currentCameraIndex].name || `Camera ${currentCameraIndex + 1}`;
+        const cameraName = cameraData[currentCameraIndex].name || `Camera ${currentCameraIndex + 1}`;
         scannerStatus.textContent = `Aktif (${cameraName})`;
         setTimeout(() => {
             scannerStatus.textContent = 'Aktif';
