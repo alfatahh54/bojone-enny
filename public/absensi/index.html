@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Absensi QR Code</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+    <link rel="stylesheet" href="../css/absensi.css">
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-gray-800">Sistem Absensi QR Code</h1>
+            <p class="text-gray-600 mt-2">Scan QR Code untuk absensi</p>
+            
+            <div class="flex items-center justify-center mt-4">
+                <img src="https://placehold.co/40x40" alt="Logo absensi berbahan dasar kartu ID dengan ikon centang hijau" class="mr-2 rounded-full">
+                <div class="bg-white px-4 py-2 rounded-full shadow-sm flex items-center">
+                    <span id="clock" class="font-medium text-gray-700"></span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scanner Section -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-semibold text-gray-700">Pemindai QR Code</h2>
+                <span id="scanner-status" class="px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">Tidak Aktif</span>
+            </div>
+            
+            <div class="scanner-container mb-4">
+                <video id="preview" class="scanner-video"></video>
+                <div class="frame"></div>
+                <div class="scan-animation" id="scan-animation"></div>
+                <div id="scanner-overlay" class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+                    <div class="text-center text-white">
+                        <div class="loading-spinner inline-block w-12 h-12 border-4 border-t-white border-r-white border-b-white border-l-transparent rounded-full mb-2"></div>
+                        <p class="font-medium">Memproses...</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex justify-center space-x-4">
+                <button id="start-scanner" class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                    </svg>
+                    Mulai Scan
+                </button>
+                <button id="stop-scanner" class="px-6 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition flex items-center" disabled>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z" />
+                    </svg>
+                    Stop Scan
+                </button>
+            </div>
+            
+            <div class="mt-4 text-center">
+                <p class="text-sm text-gray-500">Arahkan kamera ke QR Code siswa/mahasiswa</p>
+            </div>
+        </div>
+        
+        <!-- Result Section -->
+        <div class="bg-white rounded-xl shadow-lg p-6">
+            <h2 class="text-xl font-semibold text-gray-700 mb-4">Hasil Absensi</h2>
+            
+            <div id="scan-result" class="hidden">
+                <div class="bg-green-50 border border-green-200 rounded-lg p-4 mb-4">
+                    <div class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <p class="text-green-800 font-medium">Absensi berhasil dicatat!</p>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                        <div class="flex items-center space-x-3">
+                            <img src="https://placehold.co/50x50" alt="Icon profil siswa dengan latar biru muda" class="w-10 h-10 rounded-full">
+                            <div>
+                                <p class="text-xs text-gray-500">Nama</p>
+                                <p id="result-name" class="font-medium text-gray-800">-</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                        <div class="flex items-center space-x-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 p-2 text-blue-600 bg-blue-100 rounded-full" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" />
+                            </svg>
+                            <div>
+                                <p class="text-xs text-gray-500">ID Siswa</p>
+                                <p id="result-id" class="font-medium text-gray-800">-</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                        <div class="flex items-center space-x-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 p-2 text-blue-600 bg-blue-100 rounded-full" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                            <div>
+                                <p class="text-xs text-gray-500">Waktu Absensi</p>
+                                <p id="result-time" class="font-medium text-gray-800">-</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white">
+                    <thead>
+                        <tr class="bg-gray-50 border-b border-gray-200">
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">No</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Nama</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">ID</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Waktu</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="attendance-list" class="divide-y divide-gray-200">
+                        <!-- Data akan ditambahkan dinamis melalui JavaScript -->
+                        <tr>
+                            <td colspan="5" class="px-6 py-4 text-center text-gray-500">Belum ada data absensi</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="mt-4 text-right">
+                <button id="clear-data" class="text-sm text-red-600 hover:text-red-800 hover:underline">Hapus Semua Data</button>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="text-center mt-8 text-sm text-gray-500">
+            <p>Sistem Absensi QR Code © 2025. Dibuat untuk penggunaan wedding</p>
+        </div>
+    </div>
+
+    <script src="../js/absensi.js">
+    </script>
+</body>
+</html>
