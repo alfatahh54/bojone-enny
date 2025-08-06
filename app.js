@@ -75,7 +75,7 @@ app.get('/api/rsvp', async (req, res) => {
 
 app.get('/api/absensi', async (req, res) => {
     try {
-        const data = await sql `SELECT * FROM undanganku.absensi;`;
+        const data = await sql `SELECT * FROM undanganku.absensi ORDER BY absensi.time DESC;`;
         res.json({ success: true, items: data });
     } catch (err) {
         console.log(err);
