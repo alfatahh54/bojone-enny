@@ -67,7 +67,6 @@ section {
 body {
     font-family: 'Josefin Sans', sans-serif;
     background-color: #f8f4ef;
-    background-image: url('https://i.pinimg.com/originals/5c/8f/4b/5c8f4b8f3b5840a2c9f6b2b8c2d3d3e5.jpg');
     background-size: 300px;
     background-attachment: fixed;
     color: #555;
@@ -338,4 +337,25 @@ body {
 
 .close:hover {
   color: #ccc;
+}
+
+.petal {
+    /* position: absolute; */
+    /* background-color: pink; */
+    /* border-radius: 50%; */
+    /* opacity: 0.8; */
+    /* border-radius: 50% 10% 50% 10% / 50% 10% 50% 10%; Creates a petal-like shape */
+    position: relative;
+    /* transform: rotate(45deg); */
+    background-position: center;
+    background-size: cover;
+    animation: fall linear infinite;
+}
+@keyframes fall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+    }
 }

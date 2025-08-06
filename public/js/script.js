@@ -354,10 +354,31 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
+function createPetal() {
+    const petal = document.createElement('div');
+    petal.className = 'petal';
+    // Mengatur ukuran acak untuk kelopak
+    petal.style.backgroundImage = `url("../assets/petal-${Math.floor(Math.random() * 3) + 1}.png")`;
+    petal.style.top = 0
+    const size = Math.random() * 10 + 10; // Ukuran antara 10px hingga 20px
+    petal.style.width = size + 'px';
+    petal.style.height = size + 'px';
+    // Mengatur posisi horizontal kelopak
+    petal.style.left = Math.random() * 100 + 'vw';
+    petal.style.animationDuration = Math.random() * 5 + 10 + 's'; // Durasi acak antara 10-15 detik
+    document.getElementById('petal-container').appendChild(petal);
+    // Hapus kelopak setelah animasi selesai
+    petal.addEventListener('animationend', () => {
+        petal.remove();
+    });
+}
+
 // Floating hearts click animation
 document.addEventListener('DOMContentLoaded', function() {
     countdownInterval = setInterval(updateCountdown, 1000);
-    // updateCountdown();
+
+    // Buat kelopak setiap 1000ms
+    setInterval(createPetal, 3000);
 
     const footer = document.querySelector('.floral-pattern');
     
