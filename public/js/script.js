@@ -41,7 +41,7 @@ function openPopup() {
     localStorage.setItem('guest', `${id}|${guestName}`);
     guestLocale = `${id}|${guestName}`;
   }
-  makeQrCode(`${id}|${guestName}`);
+  makeQrCode(guestLocale);
 }
 
 // Fungsi untuk menutup popup
