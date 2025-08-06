@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             time: dateNow,
                             status: 'Hadir'
                         })
-                    }).then(data => {
+                    }).then(response => response.json()).then(data => {
                         console.log(data);
                         
                         // Update result display
@@ -80,24 +80,25 @@ document.addEventListener('DOMContentLoaded', function() {
                         document.getElementById('result-name').textContent = name;
                         document.getElementById('result-id').textContent = id;
                         document.getElementById('result-time').textContent = dateNow.toLocaleString('id-ID');
+                        // Show result
+                        scanResult.classList.remove('hidden');
+                        
+                        // Hide processing overlay
+                        scannerOverlay.classList.add('hidden');
+                        
+                        // Restart scanner after 3 seconds
+                        setTimeout(() => {
+                            scanAnimation.style.display = 'block';
+                        }, 3000);
                         updateAttendanceTable();
+                    }).catch(err => {
+                        console.log(err);
                     })
                     // Save to localStorage
                     // localStorage.setItem('attendanceData', JSON.stringify(attendanceData));
                     
                     // Update attendance table
                     
-                    
-                    // Show result
-                    scanResult.classList.remove('hidden');
-                    
-                    // Hide processing overlay
-                    scannerOverlay.classList.add('hidden');
-                    
-                    // Restart scanner after 3 seconds
-                    setTimeout(() => {
-                        scanAnimation.style.display = 'block';
-                    }, 3000);
                     
                 } catch (error) {
                     console.error('Error processing QR:', error);
