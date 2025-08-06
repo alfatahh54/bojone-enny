@@ -61,9 +61,10 @@ window.addEventListener('click', (e) => {
     closePopup();
   }
 });
+let countdownInterval;
 // Countdown Timer
 function updateCountdown() {
-    const weddingDate = new Date('2025-09-28T14:00:00').getTime();
+    const weddingDate = new Date('2025-08-06T14:00:00').getTime();
     const now = new Date().getTime();
     const distance = weddingDate - now;
     
@@ -355,8 +356,8 @@ document.head.appendChild(style);
 
 // Floating hearts click animation
 document.addEventListener('DOMContentLoaded', function() {
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
+    countdownInterval = setInterval(updateCountdown, 1000);
+    // updateCountdown();
 
     const footer = document.querySelector('.floral-pattern');
     
