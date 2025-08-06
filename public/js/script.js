@@ -63,7 +63,7 @@ window.addEventListener('click', (e) => {
 });
 // Countdown Timer
 function updateCountdown() {
-    const weddingDate = new Date('2025-08-06T12:00:00').getTime();
+    const weddingDate = new Date('2025-09-28T14:00:00').getTime();
     const now = new Date().getTime();
     const distance = weddingDate - now;
     
