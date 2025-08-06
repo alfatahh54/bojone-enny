@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const path = require('path');
+// const path = require('path');
 require('dotenv').config();
 // const fs = require('fs');
 const { neon } = require('@neondatabase/serverless');
@@ -72,6 +72,46 @@ app.get('/api/rsvp', async (req, res) => {
     }
     
 });
+
+app.get('api/absensi', async (req, res) => {
+    try {
+        const data = await sql `SELECT * FROM undanganku.absensi;`;
+        res.json({ success: true, items: data });
+    } catch (err) {
+        console.log(err);
+        
+        res.status(500).json({ success: false, message: 'Gagal mengambil data absensi' });
+    }
+});
+
+app.post('/api/absensi', async (req, res) => {
+    const { id, name, time, status } = req.body;
+    try {
+        const cekData = await sql `SELECT * FROM undanganku.absensi WHERE id = ${id};`;
+        if (cekData.length > 0) {
+            return res.status(200).json({ 
+                success: true,
+                message: 'Anda sudah absen'
+            });
+        }
+        const success = await sql `INSERT INTO undanganku.absensi ( id, name, time, status) VALUES ( ${id},${name}, ${time}, ${status}) RETURNING *;`;
+        if (!success) {
+            return res.status(500).json({ 
+                success: false,
+                message: 'Gagal absen'
+            });
+        }
+        res.status(201).json({ 
+            success: true,
+            message: 'Terima kasih atas kehadiran Anda!'
+        });     
+    } catch (err) {
+        return res.status(500).json({ 
+            success: false,
+            message: 'Gagal absen'
+        });
+    }
+})
 
 // Serve the main HTML file
 // app.get('/', (req, res) => {

@@ -61,9 +61,20 @@ document.addEventListener('DOMContentLoaded', function() {
                         time,
                         status: 'Hadir'
                     });
-                    
+                    fetch('/api/absensi', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            id,
+                            name,
+                            time,
+                            status: 'Hadir'
+                        })
+                    })
                     // Save to localStorage
-                    localStorage.setItem('attendanceData', JSON.stringify(attendanceData));
+                    // localStorage.setItem('attendanceData', JSON.stringify(attendanceData));
                     
                     // Update attendance table
                     updateAttendanceTable();
@@ -91,32 +102,44 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Update attendance table
     function updateAttendanceTable() {
-        if (attendanceData.length === 0) {
+        fetch('/api/absensi')
+        .then(response => response.json())
+        .then(data => {
+            attendanceData = data.items ?? [];
+            if (attendanceData.length === 0) {
+                attendanceList.innerHTML = `
+                    <tr>
+                        <td colspan="5" class="px-6 py-4 text-center text-gray-500">Belum ada data absensi</td>
+                    </tr>
+                `;
+                return;
+            }
+            
+            let html = '';
+            attendanceData.forEach((item, index) => {
+                html += `
+                    <tr class="${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'} hover:bg-gray-100">
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">${index + 1}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${item.name}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">${item.id}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">${item.time}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                ${item.status}
+                            </span>
+                        </td>
+                    </tr>
+                `;
+            });
+            attendanceList.innerHTML = html;
+        }).catch(error => {
+            console.error('Error fetching attendance data:', error);
             attendanceList.innerHTML = `
                 <tr>
-                    <td colspan="5" class="px-6 py-4 text-center text-gray-500">Belum ada data absensi</td>
+                    <td colspan="5" class="px-6 py-4 text-center text-gray-500">Gagal memuat data absensi</td>
                 </tr>
             `;
-            return;
-        }
-        
-        let html = '';
-        attendanceData.forEach((item, index) => {
-            html += `
-                <tr class="${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'} hover:bg-gray-100">
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">${index + 1}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${item.name}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">${item.id}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">${item.time}</td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                            ${item.status}
-                        </span>
-                    </td>
-                </tr>
-            `;
-        });
-        attendanceList.innerHTML = html;
+        })
     }
     
     // Initialize attendance table
