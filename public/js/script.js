@@ -1,6 +1,69 @@
+// Ambil tombol untuk membuka popup
+const qrCodeButton = document.getElementById('qr-code-button');
+
+// Ambil popup dan konten popup
+const qrCodePopup = document.getElementById('qr-code-popup');
+const qrCodeContent = document.querySelector('.popup-content');
+
+// Ambil elemen untuk menampilkan QR code
+const qrCodeImage = document.getElementById('qr-code-image');
+const btnSaveToCalendar = document.getElementById('save-to-calendar');
+
+// Fungsi untuk membuat QR code
+function makeQrCode(text) {
+  qrCodeImage.innerHTML = '';
+  new QRCode(qrCodeImage, {
+    text: text,
+    width: 200,
+    height: 200,
+    colorDark: '#000',
+    colorLight: '#fff',
+    correctLevel: QRCode.CorrectLevel.H
+  });
+}
+
+function randomizeString(length) {
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let result = '';
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+  return result;
+}
+// Fungsi untuk membuka popup
+function openPopup() {
+  qrCodePopup.style.display = 'block';
+  const urlParams = new URLSearchParams(window.location.search);
+  let guestLocale = localStorage.getItem('guest');
+  const guestName = urlParams.get('to');
+  const id = randomizeString(8);
+  if (!guestLocale || (guestLocale && guestLocale.split('|')[1] !== guestName)) {
+    localStorage.setItem('guest', `${id}|${guestName}`);
+    guestLocale = `${id}|${guestName}`;
+  }
+  makeQrCode(`${id}|${guestName}`);
+}
+
+// Fungsi untuk menutup popup
+function closePopup() {
+  qrCodePopup.style.display = 'none';
+}
+
+// Tambahkan event listener untuk tombol membuka popup
+qrCodeButton.addEventListener('click', openPopup);
+
+// Tambahkan event listener untuk tombol menutup popup
+document.querySelector('.close').addEventListener('click', closePopup);
+
+// Tambahkan event listener untuk klik di luar popup
+window.addEventListener('click', (e) => {
+  if (e.target === qrCodePopup) {
+    closePopup();
+  }
+});
 // Countdown Timer
 function updateCountdown() {
-    const weddingDate = new Date('2025-09-19T14:00:00').getTime();
+    const weddingDate = new Date('2025-08-06T12:00:00').getTime();
     const now = new Date().getTime();
     const distance = weddingDate - now;
     
@@ -8,7 +71,19 @@ function updateCountdown() {
     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    
+    if (distance < 0) {
+        clearInterval(countdownInterval);
+        document.getElementById('days').textContent = '00';
+        document.getElementById('hours').textContent = '00';
+        document.getElementById('minutes').textContent = '00';
+        document.getElementById('seconds').textContent = '00';
+        btnSaveToCalendar.classList.add('hidden');
+        qrCodeButton.classList.remove('hidden');
+        return;
+    } else if (distance < 7200000) {
+        btnSaveToCalendar.classList.add('hidden');
+        qrCodeButton.classList.remove('hidden');
+    }
     document.getElementById('days').textContent = days.toString().padStart(2, '0');
     document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
     document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
