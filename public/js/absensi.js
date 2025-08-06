@@ -68,13 +68,11 @@ document.addEventListener('DOMContentLoaded', function() {
                             status: 'Hadir'
                         })
                     }).then(response => response.json()).then(data => {
-                        console.log(data);
-                        
                         // Update result display
                         if (data.message === 'Anda sudah absen') {
-                            getElementById('result-message').textContent = 'Anda sudah melakukan absensi';
+                            document.getElementById('result-message').textContent = 'Anda sudah melakukan absensi';
                         } else {
-                            getElementById('result-message').textContent = 'Absensi berhasil dicatat!';
+                            document.getElementById('result-message').textContent = 'Absensi berhasil dicatat!';
                         }
 
                         document.getElementById('result-name').textContent = name;
