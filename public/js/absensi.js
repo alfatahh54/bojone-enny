@@ -131,7 +131,10 @@ document.addEventListener('DOMContentLoaded', function() {
             cameraData = cameras
             if (cameras.length < 2) {
                 switchCameraBtn.disabled = true;
-                switchCameraBtn.style.display = 'none';
+                switchCameraBtn.classList.add('hidden');
+            } else {
+                switchCameraBtn.disabled = false;
+                switchCameraBtn.classList.remove('hidden');
             }
             if (cameras.length > 0) {
                 scanner.start(cameras[0]);
