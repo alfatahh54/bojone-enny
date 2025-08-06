@@ -67,7 +67,9 @@ document.addEventListener('DOMContentLoaded', function() {
                             time: dateNow,
                             status: 'Hadir'
                         })
-                    }).then(response => response.json()).then(data => {
+                    }).then(data => {
+                        console.log(data);
+                        
                         // Update result display
                         if (data.message === 'Anda sudah absen') {
                             getElementById('result-message').textContent = 'Anda sudah melakukan absensi';
