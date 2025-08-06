@@ -48,12 +48,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     const data = content.split('|');
                     const id = data[0] || 'ID Tidak Valid';
                     const name = data[1] || 'Nama Tidak Valid';
-                    const time = dateNow.toLocaleString('id-ID');
-                    
-                    // Update result display
-                    document.getElementById('result-name').textContent = name;
-                    document.getElementById('result-id').textContent = id;
-                    document.getElementById('result-time').textContent = time;
                     
                     // Add to attendance list
                     // attendanceData.unshift({
@@ -73,7 +67,17 @@ document.addEventListener('DOMContentLoaded', function() {
                             time: dateNow,
                             status: 'Hadir'
                         })
-                    }).then(response => {
+                    }).then(response => response.json()).then(data => {
+                        // Update result display
+                        if (data.message === 'Anda sudah absen') {
+                            getElementById('result-message').textContent = 'Anda sudah melakukan absensi';
+                        } else {
+                            getElementById('result-message').textContent = 'Absensi berhasil dicatat!';
+                        }
+
+                        document.getElementById('result-name').textContent = name;
+                        document.getElementById('result-id').textContent = id;
+                        document.getElementById('result-time').textContent = dateNow.toLocaleString('id-ID');
                         updateAttendanceTable();
                     })
                     // Save to localStorage
