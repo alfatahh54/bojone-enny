@@ -44,10 +44,11 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(() => {
                 try {
                     // Parse QR content (format: id|nama)
+                    const dateNow = new Date()
                     const data = content.split('|');
                     const id = data[0] || 'ID Tidak Valid';
                     const name = data[1] || 'Nama Tidak Valid';
-                    const time = new Date().toLocaleString('id-ID');
+                    const time = dateNow.toLocaleString('id-ID');
                     
                     // Update result display
                     document.getElementById('result-name').textContent = name;
@@ -55,12 +56,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     document.getElementById('result-time').textContent = time;
                     
                     // Add to attendance list
-                    attendanceData.unshift({
-                        id,
-                        name,
-                        time,
-                        status: 'Hadir'
-                    });
+                    // attendanceData.unshift({
+                    //     id,
+                    //     name,
+                    //     time,
+                    //     status: 'Hadir'
+                    // });
                     fetch('/api/absensi', {
                         method: 'POST',
                         headers: {
@@ -69,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         body: JSON.stringify({
                             id,
                             name,
-                            time,
+                            time: dateNow,
                             status: 'Hadir'
                         })
                     })

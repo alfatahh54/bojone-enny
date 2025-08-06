@@ -73,7 +73,7 @@ app.get('/api/rsvp', async (req, res) => {
     
 });
 
-app.get('api/absensi', async (req, res) => {
+app.get('/api/absensi', async (req, res) => {
     try {
         const data = await sql `SELECT * FROM undanganku.absensi;`;
         res.json({ success: true, items: data });
@@ -106,6 +106,8 @@ app.post('/api/absensi', async (req, res) => {
             message: 'Terima kasih atas kehadiran Anda!'
         });     
     } catch (err) {
+        console.log(err);
+        
         return res.status(500).json({ 
             success: false,
             message: 'Gagal absen'
