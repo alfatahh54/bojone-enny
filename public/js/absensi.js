@@ -84,10 +84,10 @@ document.addEventListener('DOMContentLoaded', function() {
                         // Hide processing overlay
                         scannerOverlay.classList.add('hidden');
                         
-                        // Restart scanner after 3 seconds
+                        // Restart scanner after 1.5 seconds
                         setTimeout(() => {
                             scanAnimation.style.display = 'block';
-                        }, 3000);
+                        }, 1500);
                         updateAttendanceTable();
                     }).catch(err => {
                         console.log(err);
