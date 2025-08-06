@@ -73,12 +73,14 @@ document.addEventListener('DOMContentLoaded', function() {
                             time: dateNow,
                             status: 'Hadir'
                         })
+                    }).then(response => {
+                        updateAttendanceTable();
                     })
                     // Save to localStorage
                     // localStorage.setItem('attendanceData', JSON.stringify(attendanceData));
                     
                     // Update attendance table
-                    updateAttendanceTable();
+                    
                     
                     // Show result
                     scanResult.classList.remove('hidden');
