@@ -14,10 +14,11 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="./css/style.css" type="text/css">
 </head>
 <body class="overflow-x-hidden flex flex-col md:flex-row w-screen">
-    <section id="invitation-section" class="hero-section md:sticky top-0 grow h-screen flex flex-col justify-center items-center text-center text-white bg-cover">
+    <section id="invitation-section" class="petal-bg md:sticky top-0 grow h-screen flex flex-col justify-center items-center text-center text-white bg-cover overflow-hidden">
         <div id="petal-container" class="w-full absolute z-[-1] top-0 h-full" >
         </div>
         <h1 class="text-3xl mb-4 font-sacrramento text-pinky text-bold">Wedding Invitation</h1>
@@ -26,12 +27,12 @@
             <h2 class="mb-2 text-sm text-pinky">Yth. Bapak/Ibu/Saudara/i,</h2>
             <h3 id="guest-name" class="title-font font-bold text-lg text-pinky capitalize">Tamu Undangan</h3>
             <p class="mb-4 text-sm text-pinky">Dengan hormat, kami mengundang Anda untuk hadir di acara pernikahan kami.</p>
-            <button id="open-invitation-button" class="bg-[#e27e7e] hover:bg-[#e78e8e] text-white px-8 py-2 rounded-full text-sm transition-colors duration-300">
-                Buka Undangan
+            <button id="open-invitation-button" class="btn-primary bg-[#e27e7e] hover:bg-[#e78e8e] text-white px-6 py-2 rounded-full text-sm animate-none">
+               <i class="fa-solid fa-envelope-open animate-bounce"></i> Buka Undangan
             </button>
         </div>
     </section>
-    <div class="w-screen md:w-[520px]">
+    <div id="hidden-section" class="w-screen md:w-[520px] hidden ">
         <!-- Hero Section -->
         <section class="hidden hero-section min-h-screen flex flex-col justify-center items-center text-center px-4 py-10 relative overflow-hidden">
             <!-- <div class="absolute inset-0 bg-black opacity-10" ></div> -->
@@ -107,7 +108,7 @@
         <section class="hidden py-20 bg-center bg-no-repeat section-animate overflow-hidden">
             <div class="container mx-auto px-4">
                 <div class="max-w-3xl mx-auto bg-white bg-opacity-90 p-8 rounded-lg shadow-lg text-center">
-                    <h2 class="text-lg font-bold mb-4 text-gray-800 font-sacrramento">Allah Subhanahu Wa Ta'ala berfirman</h2>
+                    <h2 class="text-lg font-bold mb-4 text-gray-800 font-sacrramento">Allah Subhanahu Wa Ta'ala Berfirman</h2>
                     <div class="arabic-text text-2xl mb-4 text-center font-arabic" dir="rtl">
                         وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً
                     </div>
@@ -169,7 +170,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                             </svg>
                             <p class="mt-2">Kampung Kecil Sawangan</p>
-                            <p class="text-sm">Blk. DEF, Ruko Pancoran Mas, Jl. Raya Sawangan No.81, RT.1/RW.9, Mampang, Kec. Pancoran Mas, Kota Depok, Jawa Barat 16511</p>
+                            <p class="text-sm">Ruko Pancoran Mas, Jl. Raya Sawangan No.81, RT.1/RW.9, Mampang, Kec. Pancoran Mas, Kota Depok, Jawa Barat 16511</p>
                         </div>
                         <button class="mt-4 bg-[#e27e7e] text-sm hover:bg-[#e78e8e] text-white font-bold py-2 px-4 rounded" onclick="openMap('resepsi')">Lihat Peta</button>
                     </div>
@@ -234,11 +235,10 @@
         <!-- Gift Section -->
         <section class="hidden py-20 bg-center bg-no-repeat section-animate overflow-hidden">
             <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-sacrramento font-bold text-center mb-12 text-gray-800">Hadiah</h2>
+                <h2 class="text-3xl font-sacrramento font-bold text-center mb-4 text-gray-800">Love Gift</h2>
+                <p class="text-center mb-8 text-gray-800">Dengan hormat, bagi Anda yang ingin memberikan tanda kasih kepada kami, dapat melalui:</p>
                 <div class="max-w-2xl mx-auto">
                     <div class="bg-white p-8 rounded-lg shadow-lg">
-                        <h3 class="text-xl font-bold mb-6 text-center text-pinky">Kirim Hadiah</h3>
-                        
                         <div class="gift-box mb-6 p-4 border border-[#d4a4a0] rounded-lg">
                             <h4 class="font-bold mb-3 text-gray-800">Transfer Bank</h4>
                             <div class="flex justify-between items-center mb-2">
@@ -315,7 +315,8 @@
 
         <!-- Music Player Balloon -->
         <div id="music-balloon" class="hidden music-balloon">
-            <audio id="background-music" autoplay loop>
+            <audio id="background-music" controls autoplay loop>
+                <source src="./assets/music-bg.ogg" type="audio/ogg">
                 <source src="./assets/music-bg.mp3" type="audio/mpeg">
                 Your browser does not support the audio element.
             </audio>

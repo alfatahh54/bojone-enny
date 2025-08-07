@@ -91,7 +91,48 @@ body {
 }
 
 .section-animate {
-    animation: fadeIn 1s ease-out forwards;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.slide-left {
+    opacity: 0;
+    transform: translateX(100px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.slide-right {
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Animasi yang akan di-trigger saat muncul di layar */
+.animate-in {
+    opacity: 1 !important;
+    transform: translateY(0) translateX(0) !important;
+}
+
+/* Untuk elemen yang sudah terlihat */
+.section-animate.animate-in,
+.slide-left.animate-in,
+.slide-right.animate-in {
+    opacity: 1;
+    transform: translateY(0) translateX(0);
+}
+
+/* Stagger animation untuk elemen yang berurutan */
+.animate-in-delay-1 {
+    transition-delay: 0.1s;
+}
+
+.animate-in-delay-2 {
+    transition-delay: 0.2s;
+}
+
+.animate-in-delay-3 {
+    transition-delay: 0.3s;
 }
 
 .hero-section {
@@ -337,6 +378,11 @@ body {
 
 .close:hover {
   color: #ccc;
+}
+
+.petal-bg {
+    background-image: linear-gradient(135deg, rgba(255, 182, 193, 0.20), rgba(255, 228, 225, 0.20));
+    color: #5a4444;
 }
 
 .petal {

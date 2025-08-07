@@ -64,7 +64,7 @@ window.addEventListener('click', (e) => {
 let countdownInterval;
 // Countdown Timer
 function updateCountdown() {
-    const weddingDate = new Date('2025-08-06T14:00:00').getTime();
+    const weddingDate = new Date('2025-09-28T14:00:00').getTime();
     const now = new Date().getTime();
     const distance = weddingDate - now;
     
@@ -252,14 +252,14 @@ function openMap(type) {
 }
 
 // Calendar Save Function
-document.querySelector('.btn-primary').addEventListener('click', () => {
-    const weddingDate = new Date('2023-06-10T08:00:00');
+document.querySelector('#save-to-calendar').addEventListener('click', () => {
+    const weddingDate = new Date('2025-09-28T14:00:00');
     const event = {
-        title: 'Pernikahan John & Jane',
+        title: 'Pernikahan Alfatah & Anggreyni',
         start: weddingDate,
-        end: new Date(weddingDate.getTime() + 4 * 60 * 60 * 1000),
-        location: 'Masjid Al-Falah, Jakarta',
-        description: 'Acara pernikahan John & Jane. Mohon doa restunya.'
+        end: new Date(weddingDate.getTime() + 3 * 60 * 60 * 1000),
+        location: 'Kampung Kecil Sawangan, Jl. Raya Sawangan No.81, RT.1/RW.9, Mampang, Kec. Pancoran Mas, Kota Depok, Jawa Barat 16511',
+        description: 'Acara pernikahan Alfatah & Anggreyni. Mohon doa restunya.'
     };
     
     // For Google Calendar
@@ -288,16 +288,18 @@ function toggleMusic() {
         playIcon.classList.remove('hidden');
         pauseIcon.classList.add('hidden');
         musicBalloon.classList.remove('playing');
+        isPlaying = !isPlaying;
     } else {
-        backgroundMusic.play().catch(error => {
+        backgroundMusic.play().then(() => {
+            playIcon.classList.add('hidden');
+            pauseIcon.classList.remove('hidden');
+            musicBalloon.classList.add('playing');
+            isPlaying = !isPlaying;
+        }).catch(error => {
             console.error("Autoplay prevented:", error);
             // Optionally, show a message to the user to click to play music
         });
-        playIcon.classList.add('hidden');
-        pauseIcon.classList.remove('hidden');
-        musicBalloon.classList.add('playing');
     }
-    isPlaying = !isPlaying;
 }
 
 // Event listener for music toggle button
@@ -377,6 +379,34 @@ function createPetal() {
 document.addEventListener('DOMContentLoaded', function() {
     countdownInterval = setInterval(updateCountdown, 1000);
 
+    // Setup Intersection Observer untuk animasi scroll-trigger
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
+                
+                // Tambahkan delay untuk efek stagger pada elemen anak
+                const children = entry.target.querySelectorAll('.couple-card, .countdown-item, .gift-box');
+                children.forEach((child, index) => {
+                    setTimeout(() => {
+                        child.classList.add('animate-in');
+                    }, index * 200);
+                });
+            }
+        });
+    }, observerOptions);
+
+    // Target semua elemen yang perlu animasi
+    const animatedElements = document.querySelectorAll('.section-animate, .slide-left, .slide-right');
+    animatedElements.forEach(el => {
+        observer.observe(el);
+    });
+
     // Buat kelopak setiap 1000ms
     setInterval(createPetal, 3000);
 
@@ -413,32 +443,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const openInvitationButton = document.getElementById('open-invitation-button');
 
     // Get all sections that should be hidden initially
-    const hiddenSections = document.querySelectorAll('body > div > section:not(#invitation-section), footer');
+    const hiddenSections = document.querySelectorAll('body > div > section:not(#invitation-section), footer, #hidden-section');
 
     if (guestName) {
         guestNameElement.textContent = guestName;
     } else {
         guestNameElement.textContent = 'Tamu Undangan'; // Default if 'to' parameter is not present
     }
-    if(screen.width >= 768){
-        openInvitationButton.classList.add('hidden');   
-        hiddenSections.forEach(section => {
-            section.classList.remove('hidden'); // Show all other sections
-        });
-        // playIcon.classList.add('hidden');
-        // pauseIcon.classList.remove('hidden');
-        
-        musicBalloon.classList.remove('hidden');
-        // backgroundMusic.play().catch(error => {
-        //     console.error("Autoplay prevented:", error);
-        //     // Optionally, show a message to the user to click to play music
-        // });
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else {
-        openInvitationButton.classList.remove('hidden');
-    }
     openInvitationButton.addEventListener('click', () => {
-        invitationSection.classList.add('hidden'); // Hide the invitation section
+        if(screen.width >= 768)
+            openInvitationButton.classList.add('hidden');
+        else
+            invitationSection.classList.add('hidden'); // Hide the invitation section
+       
         hiddenSections.forEach(section => {
             section.classList.remove('hidden'); // Show all other sections
         });
