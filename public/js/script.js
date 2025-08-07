@@ -387,16 +387,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
+            console.log(entry);
+            
             if (entry.isIntersecting) {
                 entry.target.classList.add('animate-in');
-                
-                // Tambahkan delay untuk efek stagger pada elemen anak
-                const children = entry.target.querySelectorAll('.couple-card, .countdown-item, .gift-box');
-                children.forEach((child, index) => {
-                    setTimeout(() => {
-                        child.classList.add('animate-in');
-                    }, index * 200);
-                });
+            } else {
+                entry.target.classList.remove('animate-in');
             }
         });
     }, observerOptions);
