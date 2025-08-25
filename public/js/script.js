@@ -476,7 +476,7 @@ document.addEventListener('DOMContentLoaded', function() {
         pos.x = (pos.x < 20 ? 30 : pos.x);
         pos.y = (pos.y < 20 ? 30 : pos.y);
         pos.x = (pos.x > window.innerWidth - 200 ? window.innerWidth - 200 : pos.x);
-        pos.y = (pos.y > window.innerHeight - 200 ? window.innerHeight - 200 : pos.y);
+        pos.y = (pos.y > window.innerHeight * 0.5 ? window.innerHeight * 0.5 : pos.y);
 
         pos.size += generaterandomno(-10, 10);
         pos.size = (pos.size < 15 ? 15 : pos.size);
