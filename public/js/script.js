@@ -530,7 +530,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             // Butterfly 2
             if (document.getElementById('butterfly2')) {
-                flutter("butterfly2", 1500, { x: 150, y: 350, size: 20, rotation: 0 });
+                flutter("butterfly2", 1500, { x: 150, y: 475, size: 20, rotation: 0 });
             }
             // Butterfly 2
             if (document.getElementById('butterfly3')) {
@@ -538,7 +538,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             // Butterfly 2
             if (document.getElementById('butterfly4')) {
-                flutter("butterfly4", 1500, { x: 80, y: 450, size: 20, rotation: 0 });
+                flutter("butterfly4", 1500, { x: 80, y: 750, size: 20, rotation: 0 });
             }
         }
     }
