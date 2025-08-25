@@ -457,5 +457,89 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         // Optional: Scroll to the top or to the hero section
         window.scrollTo({ top: 0, behavior: 'smooth' });
+        
+        // Initialize butterfly animations when invitation is opened
+        setTimeout(() => {
+            initButterflies();
+        }, 1000);
     });
+
+    // Butterfly Animation Functions
+    function flutter(id, vartimer, pos) {
+        let wrapper = document.getElementById(id);
+        if (!wrapper) return;
+
+        // posisi
+        pos.x += generaterandomno(-80, 80);
+        pos.y += generaterandomno(-80, 80);
+
+        pos.x = (pos.x < 20 ? 30 : pos.x);
+        pos.y = (pos.y < 20 ? 30 : pos.y);
+        pos.x = (pos.x > window.innerWidth - 200 ? window.innerWidth - 200 : pos.x);
+        pos.y = (pos.y > window.innerHeight - 200 ? window.innerHeight - 200 : pos.y);
+
+        pos.size += generaterandomno(-10, 10);
+        pos.size = (pos.size < 15 ? 15 : pos.size);
+        pos.size = (pos.size > 40 ? 40 : pos.size);
+
+        pos.rotation += generaterandomno(-10, 10);
+        if (pos.rotation < -20) pos.rotation = 0;
+        if (pos.rotation > 20) pos.rotation = 0;
+
+        let transitiontimer = generaterandomno(20, 50) / 10;
+
+        wrapper.style.left = pos.x + "px";
+        wrapper.style.top = pos.y + "px";
+        wrapper.style.width = pos.size + "px";
+        wrapper.style.height = pos.size + "px";
+        wrapper.style.transform = "rotate(" + pos.rotation + "deg)";
+        wrapper.style.transition = "all " + transitiontimer + "s";
+
+        let wingtimer = generaterandomno(1, 5);
+        wrapper.querySelectorAll(".upperwing,.lowerwing").forEach(w => {
+            w.style.animationDuration = "0." + wingtimer + "s";
+        });
+
+        let nexttimer = vartimer + (generaterandomno(-200, 200));
+        nexttimer = (nexttimer < 1500 || nexttimer > 3000 ? 1500 : nexttimer);
+
+        setTimeout(function() { flutter(id, nexttimer, pos); }, vartimer);
+    }
+
+    function generaterandomno(min, max) {
+        return Math.floor((Math.random() * (max - min + 1)) + min);
+    }
+
+    function initButterflies() {
+        // Initialize butterflies only if they exist and the gift section is visible
+        // Find the gift section by looking for the section that contains "Love Gift" heading
+        const sections = document.querySelectorAll('section');
+        let giftSection = null;
+        
+        sections.forEach(section => {
+            const heading = section.querySelector('h2');
+            if (heading && heading.textContent.includes('Love Gift')) {
+                giftSection = section;
+            }
+        });
+
+        if (giftSection && !giftSection.classList.contains('hidden')) {
+            // Butterfly 1
+            if (document.getElementById('butterfly1')) {
+                flutter("butterfly1", 1500, { x: 50, y: 50, size: 20, rotation: 0 });
+            }
+            // Butterfly 2
+            if (document.getElementById('butterfly2')) {
+                flutter("butterfly2", 1500, { x: 150, y: 350, size: 20, rotation: 0 });
+            }
+            // Butterfly 2
+            if (document.getElementById('butterfly3')) {
+                flutter("butterfly3", 1500, { x: 240, y: 565, size: 25, rotation: 0 });
+            }
+            // Butterfly 2
+            if (document.getElementById('butterfly4')) {
+                flutter("butterfly4", 1500, { x: 80, y: 450, size: 20, rotation: 0 });
+            }
+        }
+    }
 });
