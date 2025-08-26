@@ -465,26 +465,38 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Butterfly Animation Functions
-    function flutter(id, vartimer, pos) {
+    function flutter(giftSection, id, vartimer, pos) {
         let wrapper = document.getElementById(id);
         if (!wrapper) return;
 
-        // posisi
+        // Store previous position for direction calculation
+        const prevX = pos.x;
+        const prevY = pos.y;
+
+        // Calculate new position
         pos.x += generaterandomno(-80, 80);
         pos.y += generaterandomno(-80, 80);
 
+        // Boundary checks
         pos.x = (pos.x < 20 ? 30 : pos.x);
         pos.y = (pos.y < 20 ? 30 : pos.y);
         pos.x = (pos.x > window.innerWidth - 200 ? window.innerWidth - 200 : pos.x);
-        pos.y = (pos.y > window.innerHeight * 0.5 ? window.innerHeight * 0.5 : pos.y);
+        pos.y = (pos.y > giftSection.innerHeight * 0.5 ? giftSection.innerHeight * 0.5 : pos.y);
 
+        // Size variation
         pos.size += generaterandomno(-10, 10);
         pos.size = (pos.size < 15 ? 15 : pos.size);
         pos.size = (pos.size > 40 ? 40 : pos.size);
 
-        pos.rotation += generaterandomno(-10, 10);
-        if (pos.rotation < -20) pos.rotation = 0;
-        if (pos.rotation > 20) pos.rotation = 0;
+        // Calculate rotation based on movement direction
+        const deltaX = pos.x - prevX;
+        const deltaY = pos.y - prevY;
+        
+        // Calculate angle based on movement direction (atan2 gives angle in radians)
+        const angle = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
+        
+        // Smooth rotation transition
+        pos.rotation = angle;
 
         let transitiontimer = generaterandomno(20, 50) / 10;
 
@@ -503,7 +515,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let nexttimer = vartimer + (generaterandomno(-200, 200));
         nexttimer = (nexttimer < 1500 || nexttimer > 3000 ? 1500 : nexttimer);
 
-        setTimeout(function() { flutter(id, nexttimer, pos); }, vartimer);
+        setTimeout(function() { flutter(giftSection, id, nexttimer, pos); }, vartimer);
     }
 
     function generaterandomno(min, max) {
@@ -526,19 +538,19 @@ document.addEventListener('DOMContentLoaded', function() {
         if (giftSection && !giftSection.classList.contains('hidden')) {
             // Butterfly 1
             if (document.getElementById('butterfly1')) {
-                flutter("butterfly1", 1500, { x: 50, y: 50, size: 20, rotation: 0 });
+                flutter(giftSection,"butterfly1", 1500, { x: 50, y: 50, size: 20, rotation: 0 });
             }
             // Butterfly 2
             if (document.getElementById('butterfly2')) {
-                flutter("butterfly2", 1500, { x: 150, y: 50, size: 20, rotation: 0 });
+                flutter(giftSection, "butterfly2", 1500, { x: 150, y: 50, size: 20, rotation: 0 });
             }
-            // Butterfly 2
+            // Butterfly 3
             if (document.getElementById('butterfly3')) {
-                flutter("butterfly3", 1500, { x: 170, y: 50, size: 25, rotation: 0 });
+                flutter(giftSection, "butterfly3", 1500, { x: 170, y: 50, size: 25, rotation: 0 });
             }
-            // Butterfly 2
+            // Butterfly 4
             if (document.getElementById('butterfly4')) {
-                flutter("butterfly4", 1500, { x: 80, y: 50, size: 20, rotation: 0 });
+                flutter(giftSection, "butterfly4", 1500, { x: 80, y: 50, size: 20, rotation: 0 });
             }
         }
     }
