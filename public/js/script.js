@@ -30,6 +30,7 @@ function randomizeString(length) {
   }
   return result;
 }
+
 // Fungsi untuk membuka popup
 function openPopup() {
   qrCodePopup.style.display = 'block';
@@ -61,7 +62,9 @@ window.addEventListener('click', (e) => {
     closePopup();
   }
 });
+
 let countdownInterval;
+
 // Countdown Timer
 function updateCountdown() {
     const weddingDate = new Date('2025-09-28T14:00:00').getTime();
@@ -74,9 +77,6 @@ function updateCountdown() {
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
     if (distance < 0) {
         clearInterval(countdownInterval);
-        document.getElementById('days').textContent = '00';
-        document.getElementById('hours').textContent = '00';
-        document.getElementById('minutes').textContent = '00';
         document.getElementById('seconds').textContent = '00';
         btnSaveToCalendar.classList.add('hidden');
         qrCodeButton.classList.remove('hidden');
@@ -387,8 +387,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            console.log(entry);
-            
             if (entry.isIntersecting) {
                 entry.target.classList.add('animate-in');
             } else {
@@ -480,13 +478,13 @@ document.addEventListener('DOMContentLoaded', function() {
         // Boundary checks
         pos.x = (pos.x < 20 ? 30 : pos.x);
         pos.y = (pos.y < 20 ? 30 : pos.y);
-        pos.x = (pos.x > window.innerWidth - 200 ? window.innerWidth - 200 : pos.x);
-        pos.y = (pos.y > giftSection.innerHeight * 0.5 ? giftSection.innerHeight * 0.5 : pos.y);
+        pos.x = (pos.x > giftSection.offsetWidth ? giftSection.offsetWidth : pos.x);
+        pos.y = (pos.y < giftSection.offsetHeight * 0.7 ? giftSection.offsetHeight * 0.7 : pos.y > giftSection.offsetHeight ? giftSection.offsetHeight : pos.y);
 
         // Size variation
         pos.size += generaterandomno(-10, 10);
         pos.size = (pos.size < 15 ? 15 : pos.size);
-        pos.size = (pos.size > 40 ? 40 : pos.size);
+        pos.size = (pos.size > 20 ? 20 : pos.size);
 
         // Calculate rotation based on movement direction
         const deltaX = pos.x - prevX;
@@ -496,7 +494,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const angle = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
         
         // Smooth rotation transition
-        pos.rotation = angle;
+        pos.rotation = generaterandomno(-10, 10);
 
         let transitiontimer = generaterandomno(20, 50) / 10;
 
@@ -523,35 +521,48 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function initButterflies() {
-        // Initialize butterflies only if they exist and the gift section is visible
-        // Find the gift section by looking for the section that contains "Love Gift" heading
-        const sections = document.querySelectorAll('section');
-        let giftSection = null;
+        // Initialize butterflies only if the gift section is visible
+        const giftSection = document.getElementById('verse-section');
         
-        sections.forEach(section => {
-            const heading = section.querySelector('h2');
-            if (heading && heading.textContent.includes('Love Gift')) {
-                giftSection = section;
-            }
-        });
-
-        if (giftSection && !giftSection.classList.contains('hidden')) {
-            // Butterfly 1
-            if (document.getElementById('butterfly1')) {
-                flutter(giftSection,"butterfly1", 1500, { x: 50, y: 50, size: 20, rotation: 0 });
-            }
-            // Butterfly 2
-            if (document.getElementById('butterfly2')) {
-                flutter(giftSection, "butterfly2", 1500, { x: 150, y: 50, size: 20, rotation: 0 });
-            }
-            // Butterfly 3
-            if (document.getElementById('butterfly3')) {
-                flutter(giftSection, "butterfly3", 1500, { x: 170, y: 50, size: 25, rotation: 0 });
-            }
-            // Butterfly 4
-            if (document.getElementById('butterfly4')) {
-                flutter(giftSection, "butterfly4", 1500, { x: 80, y: 50, size: 20, rotation: 0 });
-            }
+        if (giftSection) {
+             console.log(giftSection.offsetWidth, giftSection.offsetHeight, "giftSection", giftSection);
+            // create 8 elements butterflies
+            for (let i = 0; i < 8; i++) {
+                const wrapper = document.createElement('div');
+                wrapper.classList.add('butterfly_wrapper');
+                wrapper.id = "butterfly-" + i;
+                wrapper.innerHTML = `
+                    <div class="leftwings">
+                        <div class="perspective">
+                            <div class="upperwing${i%2==0 ? '' : '2'} upperwing_left"></div>
+                        </div>
+                        <div class="perspective">
+                            <div class="lowerwing${i%2==0 ? '' : '2'} lowerwing_left"></div>
+                        </div>
+                    </div>
+                    <div class="rightwings">
+                        <div class="perspective">
+                            <div class="upperwing${i%2==0 ? '' : '2'} upperwing_right"></div>
+                        </div>
+                        <div class="perspective">
+                            <div class="lowerwing${i%2==0 ? '' : '2'} lowerwing_right"></div>
+                        </div>
+                    </div>
+                `;
+                giftSection.appendChild(wrapper);
+                
+                const id = "butterfly-" + i;
+                const vartimer = generaterandomno(1500, 3000);
+                const pos = {
+                    x: generaterandomno(0, giftSection.offsetWidth),
+                    y: generaterandomno(giftSection.offsetHeight * 0.7, giftSection.offsetHeight),
+                    size: generaterandomno(15, 20),
+                    rotation: 0
+                };
+                flutter(giftSection, id, vartimer, pos);
+            }            
         }
+        
+        
     }
 });
