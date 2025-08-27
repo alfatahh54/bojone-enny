@@ -205,11 +205,11 @@ function showToast(message) {
     const toastMsg = document.getElementById('toast-message');
     toastMsg.textContent = message;
     toast.classList.remove('hidden');
-    toast.classList.add('flex');
+    // toast.classList.add('flex');
     
     setTimeout(() => {
         toast.classList.add('hidden');
-        toast.classList.remove('flex');
+        // toast.classList.remove('flex');
     }, 3000);
 }
 
@@ -437,6 +437,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const urlParams = new URLSearchParams(window.location.search);
     const guestName = urlParams.get('to');
     const guestNameElement = document.getElementById('guest-name');
+    const formName = document.getElementById('name');
     const invitationSection = document.getElementById('invitation-section');
     const openInvitationButton = document.getElementById('open-invitation-button');
 
@@ -445,6 +446,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (guestName) {
         guestNameElement.textContent = guestName;
+        formName.value = guestName;
     } else {
         guestNameElement.textContent = 'Tamu Undangan'; // Default if 'to' parameter is not present
     }

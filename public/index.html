@@ -250,30 +250,68 @@
                 <p class="text-center mb-8 text-gray-800">Dengan hormat, bagi Anda yang ingin memberikan tanda kasih kepada kami, dapat melalui:</p>
                 <div class="max-w-2xl mx-auto pb-5">
                     <div class="pb-3">
-                        <div class="gift-box bg-white mb-6 p-4 border border-[#d4a4a0] rounded-lg">
-                            <h4 class="font-bold mb-3 text-gray-800">Transfer Bank</h4>
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-gray-700">Bank BCA</span>
-                                <button onclick="copyToClipboard('5050276645')" class="bg-pink-100 hover:bg-pink-200 text-pinky py-1 px-3 rounded text-sm">
-                                    Salin
-                                </button>
-                            </div>
-                            <div class="flex flex-col bg-gray-50 p-2 rounded text-sm">
-                                <span class="font-mono">5050276645</span>
-                                <span class="text-sm text-gray-600">Alfatah Hidayat</span>
+                        <div class="card-container mb-6 rounded-lg">
+                            <div class="card" >
+                                <!-- Front -->
+                                <div class="card-face card-front rounded-lg h-full">
+                                    <div class="bank-name">BCA</div>
+                                    <div class="chip"></div>
+                                    <div class="card-number">5050 2766 45</div>
+                                    <div class="row text-sm">
+                                        <div></div>
+                                        <div>VISA</div>
+                                    </div>
+                                </div>
+
+                                <!-- Back -->
+                                <div class="card-face card-back rounded-lg h-full">
+                                    <div class="magnetic-strip h-[33%]"></div>
+                                    <div>
+                                        <div class="value">5050 2766 45</div>
+                                    </div>
+
+                                    <div class="owner-line">
+                                        <div>
+                                            <div class="owner-name text-sm">ALFATAH HIDAYAT</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="copy-wrap">
+                                        <button class="bg-white text-black py-1 px-3 rounded text-sm" onclick="copyToClipboard('5050276645')">Salin</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="gift-box bg-white mb-6 p-4 border border-[#d4a4a0] rounded-lg">
-                            <h4 class="font-bold mb-3 text-gray-800">Transfer Bank</h4>
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-gray-700">Bank BRI</span>
-                                <button onclick="copyToClipboard('023001141924508')" class="bg-pink-100 hover:bg-pink-200 text-pinky py-1 px-3 rounded text-sm">
-                                    Salin
-                                </button>
-                            </div>
-                            <div class="flex flex-col bg-gray-50 p-2 rounded text-sm">
-                                <span class="font-mono">023001141924508</span>
-                                <span class="text-sm text-gray-600">Anggreyni F Kordak</span>
+                        <div class="card-container mb-6 rounded-lg">
+                            <div class="card">
+                                <!-- Front -->
+                                <div class="card-face card-front rounded-lg h-full">
+                                    <div class="bank-name">BRI</div>
+                                    <div class="chip"></div>
+                                    <div class="card-number">0230 0114 1924 508</div>
+                                    <div class="row text-sm">
+                                        <div></div>
+                                        <div>VISA</div>
+                                    </div>
+                                </div>
+
+                                <!-- Back -->
+                                <div class="card-face card-back rounded-lg h-full">
+                                    <div class="magnetic-strip h-[33%]"></div>
+                                    <div>
+                                        <div class="value">0230 0114 1924 508</div>
+                                    </div>
+
+                                    <div class="owner-line">
+                                        <div>
+                                            <div class="owner-name text-sm">ANGGREYNI F KORDAK</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="copy-wrap">
+                                        <button class="bg-white text-black py-1 px-3 rounded text-sm" onclick="copyToClipboard('023001141924508')">Salin</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         
@@ -297,7 +335,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="bottom-ornament flex justify-center overflow-hidden bottom-0 left-0">
+                <div class="bottom-ornament flex justify-center items-center overflow-hidden bottom-0 left-0">
                     <img src="./assets/gift.png" class="w-[10%] h-[10%]" alt="bottom-ornament">
                     <img src="./assets/gift.png" class="w-[10%] h-[10%]" alt="bottom-ornament">
                     <img src="./assets/gift.png" class="w-[10%] h-[10%]" alt="bottom-ornament">
@@ -335,7 +373,7 @@
 
         <!-- Music Player Balloon -->
         <div id="music-balloon" class="hidden music-balloon">
-            <audio id="background-music" controls autoplay loop>
+            <audio id="background-music" class="opacity-0" controls autoplay loop>
                 <source src="./assets/music-bg.ogg" type="audio/ogg">
                 <source src="./assets/music-bg.mp3" type="audio/mpeg">
                 Your browser does not support the audio element.
@@ -353,8 +391,8 @@
                 </svg>
             </button>
         </div>
-        <div id="toast" class="hidden w-full fixed top-4 text-white flex justify-center transition-opacity duration-300">
-            <div class="flex bg-green-500 rounded-md shadow-lg px-4 py-2 items-center">
+        <div id="toast" class="hidden w-full fixed top-4 rounded-md shadow-lg transition-opacity duration-300">
+            <div class="flex w-full bg-green-500 text-center text-white items-center px-4 py-2">
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                 </svg>
