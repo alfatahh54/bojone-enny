@@ -686,7 +686,14 @@ body {
 /* Front */
 .card-front{
     color:#fff;
-    background: radial-gradient(120% 120% at 0% 0%, #4f86ff 0%, #2563eb 55%, #1e3a8a 100%);
+    /*background: radial-gradient(120% 120% at 0% 0%, #4f86ff 0%, #2563eb 55%, #1e3a8a 100%);*/
+    background: radial-gradient(
+  circle at top left,
+  #fff0f5 0%,
+  #ffb6c1 40%,
+  #ff8fa3 75%,
+  #732e2e 100%
+);
     padding:20px; display:flex; flex-direction:column; gap:18px;
 }
 .bank-name{ font-weight:700; letter-spacing:.5px }
