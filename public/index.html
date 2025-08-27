@@ -32,31 +32,39 @@
             </button>
         </div>
     </section>
-    <div id="hidden-section" class="w-screen md:w-[520px] hidden ">
+    <div id="hidden-section" class="w-screen md:w-[520px] hidden overflow-hidden">
+        
         <!-- Hero Section -->
         <section class="hidden hero-section min-h-screen flex flex-col justify-center items-center text-center px-4 py-10 relative overflow-hidden">
+            <div class="top-ornament1 vh-100">
+                <img src="./assets/gate.png" alt="top-ornament1">
+            </div>
             <!-- <div class="absolute inset-0 bg-black opacity-10" ></div> -->
-            <div class="relative z-10 section-animate">
-                <h2 class="text-2xl font-bold text-pinky font-sacrramento">The Wedding Of</h2>
-                <div class="flex justify-center items-center">
+            <div class="relative z-10 section-animate pt-12">
+                <div class="wedding-of">
+                    <h2 class="text-2xl font-bold text-pinky font-sacrramento">The Wedding Of</h2>
+                </div>
+                <div class="logo flex justify-center items-center">
                     <img src="./assets/A.gif" alt="logo" class="w-[85%]">
                 </div>
                 <div class="couple-name text-4xl text-pinky my-4">
                     <!-- <img src="./bg-couple-name.png" alt="bg-couple-name" class="absolute"> -->
                     <span>Alfatah & Anggreyni</span>
                 </div>
-                <p class="text-pinky mb-1">Minggu, 28 September 2025</p>
-                <div class="flex justify-center">
-                    <div class="countdown flex justify-center gap-2 mb-4 text-pinky w-[70%]">
-                        <div class="countdown-item py-2 px-2 rounded-lg bg-[#ffc6c6]/30"><span id="days">00</span> Hari</div>
-                        <div class="countdown-item py-2 px-2 rounded-lg bg-[#ffc6c6]/30"><span id="hours">00</span> Jam</div>
-                        <div class="countdown-item py-2 px-2 rounded-lg bg-[#ffc6c6]/30"><span id="minutes">00</span> Menit</div>
-                        <div class="countdown-item py-2 px-2 rounded-lg bg-[#ffc6c6]/30"><span id="seconds">00</span> Detik</div>
+                <div class="count-down">
+                    <p class="text-pinky mb-1">Minggu, 28 September 2025</p>
+                    <div class="flex justify-center">
+                        <div class="countdown flex justify-center gap-2 mb-4 text-pinky w-[70%]">
+                            <div class="countdown-item py-2 px-2 rounded-lg bg-[#ffc6c6]/30"><span id="days">00</span> Hari</div>
+                            <div class="countdown-item py-2 px-2 rounded-lg bg-[#ffc6c6]/30"><span id="hours">00</span> Jam</div>
+                            <div class="countdown-item py-2 px-2 rounded-lg bg-[#ffc6c6]/30"><span id="minutes">00</span> Menit</div>
+                            <div class="countdown-item py-2 px-2 rounded-lg bg-[#ffc6c6]/30"><span id="seconds">00</span> Detik</div>
+                        </div>
                     </div>
+                    <button id="save-to-calendar" class="btn-primary bg-[#e27e7e] hover:bg-[#e78e8e] text-white font-bold py-2 px-6 rounded-full text-sm">Simpan ke Kalender</button>
+                    <!-- Tombol untuk membuka popup -->
+                    <button id="qr-code-button" class="hidden btn-primary bg-[#e27e7e] hover:bg-[#e78e8e] text-white font-bold py-2 px-6 rounded-full text-sm">Tampilkan QR Code</button>
                 </div>
-                <button id="save-to-calendar" class="btn-primary bg-[#e27e7e] hover:bg-[#e78e8e] text-white font-bold py-2 px-6 rounded-full text-sm">Simpan ke Kalender</button>
-                <!-- Tombol untuk membuka popup -->
-                <button id="qr-code-button" class="hidden btn-primary bg-[#e27e7e] hover:bg-[#e78e8e] text-white font-bold py-2 px-6 rounded-full text-sm">Tampilkan QR Code</button>
             </div>
             
             <div class="absolute hidden bottom-10 left-0 right-0 text-center">

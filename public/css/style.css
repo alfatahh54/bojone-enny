@@ -7,6 +7,33 @@ section {
     width: 100%;
 }
 
+@keyframes zoomFade {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(3);
+    opacity: 1;
+    animation: pulse 2s ease-in-out infinite;
+  }
+}
+
+@keyframes zoomInText {
+  0% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.7);
+    opacity: 0.1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
 @keyframes slideLeft {
     from { transform: translateX(100%); }
     to { transform: translateX(0); }
@@ -135,6 +162,35 @@ section {
     width: 100%;
 }
 
+.top-ornament1 {
+    position: absolute;
+    overflow: hidden;
+    /* width: 100%;    */
+    height: 100%;   
+    z-index: -1;
+    /* top: -3%; */
+}
+.top-ornament1 img {
+    animation: zoomFade 4s ease-in-out;
+    transform: scale(3);
+    opacity: 1;
+}
+
+
+.wedding-of {
+    /* position: absolute; */
+    overflow: hidden;
+    /* width: 100%;    */
+    /* height: 100%;    */
+    /* z-index: -1; */
+    /* top: -3%; */
+}
+.wedding-of h2 {
+    animation: zoomInText 5s ease-in;
+    /* transform: scale(1); */
+    opacity: 1;
+}
+
 body {
     font-family: 'Josefin Sans', sans-serif;
     background-color: #f8f4ef;
@@ -244,6 +300,23 @@ body {
 .couple-name {
     font-family: 'Sacramento', cursive;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.couple-name span {
+    animation: zoomInText 5s ease-in;
+    /* transform: scale(1); */
+    opacity: 1;
+}
+.logo img {
+    animation: zoomInText 4s ease-in;
+    /* transform: scale(1); */
+    opacity: 1;
+}
+
+.count-down {
+    animation: zoomInText 5.5s ease-in;
+    /* transform: scale(1); */
+    opacity: 1;
 }
 
 .gift-box {
