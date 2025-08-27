@@ -375,6 +375,10 @@ function createPetal() {
     });
 }
 
+function generaterandomno(min, max) {
+    return Math.floor((Math.random() * (max - min + 1)) + min);
+}
+
 // Floating hearts click animation
 document.addEventListener('DOMContentLoaded', function() {
     countdownInterval = setInterval(updateCountdown, 1000);
@@ -470,54 +474,50 @@ document.addEventListener('DOMContentLoaded', function() {
         // Store previous position for direction calculation
         const prevX = pos.x;
         const prevY = pos.y;
-
-        // Calculate new position
-        pos.x += generaterandomno(-80, 80);
-        pos.y += generaterandomno(-80, 80);
-
-        // Boundary checks
-        pos.x = (pos.x < 20 ? 30 : pos.x);
-        pos.y = (pos.y < 20 ? 30 : pos.y);
-        pos.x = (pos.x > giftSection.offsetWidth ? giftSection.offsetWidth : pos.x);
-        pos.y = (pos.y < giftSection.offsetHeight * 0.7 ? giftSection.offsetHeight * 0.7 : pos.y > giftSection.offsetHeight ? giftSection.offsetHeight : pos.y);
-
         // Size variation
         pos.size += generaterandomno(-10, 10);
         pos.size = (pos.size < 15 ? 15 : pos.size);
         pos.size = (pos.size > 20 ? 20 : pos.size);
 
-        // Calculate rotation based on movement direction
-        const deltaX = pos.x - prevX;
-        const deltaY = pos.y - prevY;
-        
-        // Calculate angle based on movement direction (atan2 gives angle in radians)
-        const angle = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
-        
-        // Smooth rotation transition
-        pos.rotation = generaterandomno(-10, 10);
+        let angle = generaterandomno(-45, 45);
+        pos.rotation += angle;
+        pos.rotation = (pos.rotation);
 
-        let transitiontimer = generaterandomno(20, 50) / 10;
+        // set random distance
+        let distance = generaterandomno(50, 100);
+        // set new position
+        pos.x += distance * Math.cos(pos.rotation * (Math.PI / 180));
+        pos.y += distance * Math.sin(pos.rotation * (Math.PI / 180));
 
+        // Boundary checks
+        pos.x = (pos.x > giftSection.offsetWidth ? giftSection.offsetWidth : pos.x);
+        pos.y = (pos.y < giftSection.offsetHeight * 0.7 ? giftSection.offsetHeight * 0.7 : pos.y > giftSection.offsetHeight ? giftSection.offsetHeight : pos.y);
+        const dx = pos.x - prevX;
+        const dy = pos.y - prevY;
+        const checkAngle = Math.atan2(dy, dx) * (180 / Math.PI);
+        const angleDiff = Math.abs(checkAngle - pos.rotation);
+        if (angleDiff > 0) {
+            pos.rotation = checkAngle;
+        }
+
+        pos.rotation = (pos.rotation + 90) % 360;
+        let transitiontimer = distance / generaterandomno(10, 30);
+        // if (transitiontimer < 1) transitiontimer = 1;
         wrapper.style.left = pos.x + "px";
         wrapper.style.top = pos.y + "px";
         wrapper.style.width = pos.size + "px";
         wrapper.style.height = pos.size + "px";
         wrapper.style.transform = "rotate(" + pos.rotation + "deg)";
-        wrapper.style.transition = "all " + transitiontimer + "s";
+        wrapper.style.transition = "left " + transitiontimer + "s 2s, top " + transitiontimer + "s 2s, width " + transitiontimer + "s 2s, height " + transitiontimer + "s 2s, transform  2s";
 
         let wingtimer = generaterandomno(1, 5);
         wrapper.querySelectorAll(".upperwing,.lowerwing").forEach(w => {
             w.style.animationDuration = "0." + wingtimer + "s";
         });
 
-        let nexttimer = vartimer + (generaterandomno(-200, 200));
-        nexttimer = (nexttimer < 1500 || nexttimer > 3000 ? 1500 : nexttimer);
+        let nexttimer = (transitiontimer + 3) * 1000;
 
         setTimeout(function() { flutter(giftSection, id, nexttimer, pos); }, vartimer);
-    }
-
-    function generaterandomno(min, max) {
-        return Math.floor((Math.random() * (max - min + 1)) + min);
     }
 
     function initButterflies() {
@@ -525,7 +525,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const giftSection = document.getElementById('verse-section');
         
         if (giftSection) {
-             console.log(giftSection.offsetWidth, giftSection.offsetHeight, "giftSection", giftSection);
             // create 8 elements butterflies
             for (let i = 0; i < 8; i++) {
                 const wrapper = document.createElement('div');
@@ -562,7 +561,5 @@ document.addEventListener('DOMContentLoaded', function() {
                 flutter(giftSection, id, vartimer, pos);
             }            
         }
-        
-        
     }
 });
