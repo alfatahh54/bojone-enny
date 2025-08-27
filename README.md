@@ -1,4 +1,4 @@
-# Wedding Invitation Webpage
+# Wedding Invitation
 
 ## Deskripsi
 
