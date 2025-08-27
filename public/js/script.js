@@ -491,7 +491,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Boundary checks
         pos.x = (pos.x > giftSection.offsetWidth ? giftSection.offsetWidth : pos.x);
-        pos.y = (pos.y < giftSection.offsetHeight * 0.7 ? giftSection.offsetHeight * 0.7 : pos.y > giftSection.offsetHeight ? giftSection.offsetHeight : pos.y);
+        pos.y = (pos.y < giftSection.offsetHeight * 0.5 ? giftSection.offsetHeight * 0.5 : pos.y > giftSection.offsetHeight ? giftSection.offsetHeight : pos.y);
         const dx = pos.x - prevX;
         const dy = pos.y - prevY;
         const checkAngle = Math.atan2(dy, dx) * (180 / Math.PI);
@@ -554,7 +554,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const vartimer = generaterandomno(1500, 3000);
                 const pos = {
                     x: generaterandomno(0, giftSection.offsetWidth),
-                    y: generaterandomno(giftSection.offsetHeight * 0.7, giftSection.offsetHeight),
+                    y: generaterandomno(giftSection.offsetHeight * 0.5, giftSection.offsetHeight),
                     size: generaterandomno(15, 20),
                     rotation: 0
                 };

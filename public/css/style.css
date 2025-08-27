@@ -17,6 +17,30 @@ section {
     to { transform: translateX(0); }
 }
 
+@keyframes slideLeftRight {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(10%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideRightLeft {
+  0% {
+    transform: translateX(10%);
+  }
+  50% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(10%);
+  }
+}
+
 .slide-left {
     animation: slideLeft 1s ease-in-out;
 }
@@ -45,7 +69,7 @@ section {
     overflow: hidden;
     width: 100%;   
     z-index: -1;
-    top:0;
+    top: -3%;
 }
 .bottom-ornament {
     position: absolute;
@@ -53,6 +77,58 @@ section {
     overflow: hidden;
     z-index: -1; 
 } 
+
+.bottom-ornament1 {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    overflow: hidden;
+    z-index: -1; 
+} 
+
+.bottom-ornament1 img {
+    animation: pulse 3s ease-in-out infinite;
+    width: 100%;
+}
+
+.bottom-ornament2 {
+    position: absolute;
+    width: 100%;
+    bottom: -45px;
+    overflow: hidden;
+    z-index: -1; 
+} 
+
+.bottom-ornament2 img {
+    animation: slideRightLeft 8s ease-in-out infinite;
+    width: 100%;
+}
+
+.bottom-ornament3 {
+    position: absolute;
+    width: 100%;
+    bottom: -20px;
+    overflow: hidden;
+    z-index: -1; 
+} 
+
+.bottom-ornament3 img {
+    animation: slideLeftRight 8s ease-in-out infinite;
+    width: 100%;
+}
+
+.bottom-ornament4 {
+    position: absolute;
+    width: 100%;
+    bottom: -1;
+    overflow: hidden;
+    z-index: -1; 
+} 
+
+.bottom-ornament4 img {
+    animation: pulse 4s ease-in-out infinite;
+    width: 100%;
+}
 
 .top-ornament img {
     animation: pulse 2s ease-in-out infinite;
