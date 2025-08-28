@@ -35,11 +35,11 @@
     <div id="hidden-section" class="w-screen md:w-[520px] hidden overflow-hidden">
         
         <!-- Hero Section -->
-        <section class="hidden hero-section min-h-screen flex flex-col justify-center items-center text-center px-4 py-10 relative overflow-hidden">
+        <section class="hidden hero-section min-h-screen flex flex-col justify-center items-center text-center px-4 py-10 relative overflow-hidden section-animate">
             <div class="welcome-background vh-100">
                 <img src="./assets/bg-welcome.jpeg" alt="welcome-background">
             </div>
-            <div class="top-ornament1 vh-100 hover:top-ornament1-hover">
+            <div class="top-ornament1 h-full overflow-hidden">
                 <img src="./assets/gate.png" alt="top-ornament1">
             </div>
             <!-- <div class="absolute inset-0 bg-black opacity-10" ></div> -->
@@ -233,34 +233,32 @@
                             <!-- <label class="block font-bold mb-2">Kehadiran</label> -->
                             <ul class="grid w-full gap-6 grid-cols-2">
                                 <li>
-                                    <label for="hosting-small" class="inline-flex h-full items-center w-full p-2 text-pinky border border-[#ffaba8] rounded-lg cursor-pointer peer-checked:border-[#ffaba8] peer-checked:text-pinky hover:text-pinky hover:bg-[#ffe1e0]">
-                                    <input type="radio" id="hosting-small" name="attendance" value="true" class="sr-only peer" />
-                                    
-                                    <!-- Custom Radio Indicator -->
-                                    <div class="w-4 h-4 mr-2 rounded-full border-2 border-[#ffaba8] flex items-center justify-center peer-checked:bg-[#ffaba8]">
-                                        <div class="w-2 h-2 bg-white rounded-full"></div>
-                                    </div>
+                                    <label for="hadir" class="inline-flex h-full items-center w-full p-2 text-pinky border border-[#ffaba8] rounded-lg cursor-pointer hover:text-pinky hover:bg-[#ffe1e0]">
+                                        <input type="radio" id="hadir" name="attendance" value="true" class="sr-only peer" />
+                                        
+                                        <!-- Custom Radio Indicator -->
+                                        <div class="w-4 h-4 mr-2 rounded-full border-2 border-[#ffaba8] flex items-center justify-center peer-checked:bg-[#ffaba8]">
+                                            <div class="w-2 h-2 bg-white rounded-full"></div>
+                                        </div>
 
-                                    <div class="block">
-                                        <div class="w-full font-semibold">Hadir</div>
-                                    </div>
-                                </label>
-
+                                        <div class="block">
+                                            <div class="w-full font-semibold">Hadir</div>
+                                        </div>
+                                    </label>
                                 </li>
                                 <li>
-                                    <label for="hosting-small" class="inline-flex h-full items-center w-full p-2 text-pinky border border-[#ffaba8] rounded-lg cursor-pointer peer-checked:border-[#ffaba8] peer-checked:text-pinky hover:text-pinky hover:bg-[#ffe1e0]">
-                                    <input type="radio" id="hosting-small" name="attendance" value="false" class="sr-only peer" />
-                                    
-                                    <!-- Custom Radio Indicator -->
-                                    <div class="w-4 h-4 mr-2 rounded-full border-2 border-[#ffaba8] flex items-center justify-center peer-checked:bg-[#ffaba8]">
-                                        <div class="w-2 h-2 bg-white rounded-full"></div>
-                                    </div>
+                                    <label for="tidak-hadir" class="inline-flex h-full items-center w-full p-2 text-pinky border border-[#ffaba8] rounded-lg cursor-pointer hover:text-pinky hover:bg-[#ffe1e0]">
+                                        <input type="radio" id="tidak-hadir" name="attendance" value="false" class="sr-only peer" />
+                                        
+                                        <!-- Custom Radio Indicator -->
+                                        <div class="w-4 h-4 mr-2 rounded-full border-2 border-[#ffaba8] flex items-center justify-center peer-checked:bg-[#ffaba8]">
+                                            <div class="w-2 h-2 bg-white rounded-full"></div>
+                                        </div>
 
-                                    <div class="block">
-                                        <div class="w-full font-semibold">Tidak Hadir</div>
-                                    </div>
-                                </label>
-
+                                        <div class="block">
+                                            <div class="w-full font-semibold">Tidak Hadir</div>
+                                        </div>
+                                    </label>
                                 </li>
                             </ul>
 
@@ -299,14 +297,14 @@
         <!-- Gift Section -->
         <section id="gift-section" class="hidden py-20 bg-center bg-no-repeat section-animate overflow-hidden">
             
-            <div class="gift-ornament flex justify-center items-center overflow-hidden top-0 left-0">
-                <img src="./assets/gift.png" class="w-[10%] h-[10%]" alt="top-ornament">
-                <img src="./assets/gift.png" class="w-[10%] h-[10%]" alt="top-ornament">
-                <img src="./assets/gift.png" class="w-[10%] h-[10%]" alt="top-ornament">
-                <img src="./assets/gift.png" class="w-[20%]" alt="top-ornament">
-                <img src="./assets/gift.png" class="w-[10%] h-[10%]" alt="top-ornament">
-                <img src="./assets/gift.png" class="w-[10%] h-[10%]" alt="top-ornament">
-                <img src="./assets/gift.png" class="w-[10%] h-[10%]" alt="top-ornament">
+            <div class="gift-ornament flex justify-center h-[10%] items-center overflow-hidden top-0 left-0">
+                <img src="./assets/gift.png" class="w-[10%] animate-bounce [animation-delay:0s]" alt="top-ornament">
+                <img src="./assets/gift.png" class="w-[10%] animate-bounce [animation-delay:0.2s]" alt="top-ornament">
+                <img src="./assets/gift.png" class="w-[10%] animate-bounce [animation-delay:0.4s]" alt="top-ornament">
+                <img src="./assets/gift.png" class="w-[20%] animate-bounce [animation-delay:0.6s]" alt="top-ornament">
+                <img src="./assets/gift.png" class="w-[10%] animate-bounce [animation-delay:0.8s]" alt="top-ornament">
+                <img src="./assets/gift.png" class="w-[10%] animate-bounce [animation-delay:1s]" alt="top-ornament">
+                <img src="./assets/gift.png" class="w-[10%] animate-bounce [animation-delay:1.2s]" alt="top-ornament">
             </div>
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl font-sacrramento font-bold text-center mb-4 text-gray-800 py-10">Love Gift</h2>
@@ -316,7 +314,7 @@
                         <div class="card-container flex justify-center mb-6 rounded-lg">
                             <div class="card" >
                                 <!-- Front -->
-                                <div class="card-face card-front flex justify-center text-center text-2xl rounded-lg h-full bg-[url('./assets/bg-card.jpeg')] bg-cover">
+                                <div class="card-face card-front flex text-center text-2xl pt-[20%] rounded-lg h-full bg-[url('./assets/bg-card.jpeg')] bg-cover">
                                     <div class="bank-name text-pinky flex ps-8">
                                         <div class="chip"></div>
                                         <div class="ps-2 pt-1">BCA</div>
@@ -346,7 +344,7 @@
                         <div class="card-container flex justify-center mb-6 rounded-lg">
                             <div class="card">
                                 <!-- Front -->
-                                <div class="card-face card-front flex justify-center text-center text-2xl rounded-lg h-full bg-[url('./assets/bg-card.jpeg')] bg-cover">
+                                <div class="card-face card-front flex text-center text-2xl pt-[20%] rounded-lg h-full bg-[url('./assets/bg-card.jpeg')] bg-cover">
                                     <div class="bank-name text-pinky flex ps-8">
                                         <div class="chip"></div>
                                         <div class="ps-2 pt-1">BRI</div>

@@ -208,10 +208,15 @@ section {
 }
 
 .top-ornament1 img {
+    transform: scale(1.4);
+    opacity: 0.4 !important;
+}
+
+.section-animate.animate-in .top-ornament1 img {
     animation: zoomFade3x 6s ease-in-out forwards;
     animation-delay: 0s, 3.9s; /* zoomFade3x starts immediately, pulse starts after 4s */
     transform: scale(3.5);
-    opacity: 0.6;
+    opacity: 0.6 !important;
 }
 
 
@@ -232,13 +237,16 @@ section {
     /* top: -3%; */
 }
 .welcome-background img {
+    transform: translateY(33%) scale(1.7);
+    opacity: 0;
+}
+
+.section-animate.animate-in .welcome-background img {
     animation: zoomFade2x 5s ease-in-out forwards;
-    animation-delay: 0s; /* zoomFade starts immediately, pulse starts after 4s */
+    animation-delay: 0s;
     transform: translateY(33%) scale(2);
     opacity: 0.4;
 }
-
-
 .wedding-of {
     /* position: absolute; */
     overflow: hidden;
@@ -248,9 +256,8 @@ section {
     /* top: -3%; */
 }
 .wedding-of h2 {
-    animation: zoomInText 5s ease-in;
-    /* transform: scale(1); */
-    opacity: 1;
+    transform: scale(0);
+    opacity: 0;
 }
 
 .footer-ornament {
@@ -304,8 +311,8 @@ body {
 
 /* Animasi yang akan di-trigger saat muncul di layar */
 .animate-in {
-    opacity: 1 !important;
-    transform: translateY(0) translateX(0) !important;
+    opacity: 1;
+    transform: translateY(0) translateX(0);
 }
 
 /* Untuk elemen yang sudah terlihat */
@@ -370,19 +377,28 @@ body {
 }
 
 .couple-name {
-    animation: zoomInText 5s ease-in;
-    /* transform: scale(1); */
-    opacity: 1;
+    transform: scale(0);
+    opacity: 0;
 }
 .logo img {
-    animation: zoomInText 5s ease-in;
-    /* transform: scale(1); */
-    opacity: 1;
+    transform: scale(0);
+    opacity: 0;
 }
 
 .count-down {
+    transform: scale(0);
+    opacity: 0;
+}
+
+.section-animate.animate-in .couple-name, .section-animate.animate-in .logo img, .section-animate.animate-in .wedding-of h2 {
+    animation: zoomInText 5s ease-in;
+    transform: scale(1);
+    opacity: 1;
+}
+
+.section-animate.animate-in .count-down {
     animation: zoomInText 5.5s ease-in;
-    /* transform: scale(1); */
+    transform: scale(1);
     opacity: 1;
 }
 
