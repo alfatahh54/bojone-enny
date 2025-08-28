@@ -60,7 +60,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (name === '') {
                         throw new Error('Invalid QR code format');
                     }
-                    const id = Math.floor(Math.random() * 1000000);
                     fetch('/api/absensi', {
                         method: 'POST',
                         headers: {
@@ -80,8 +79,9 @@ document.addEventListener('DOMContentLoaded', function() {
                             document.getElementById('result-message').textContent = 'Absensi berhasil dicatat!';
                         }
 
-                        document.getElementById('result-name').textContent = name;
-                        document.getElementById('result-id').textContent = id;
+                        document.getElementById('result-name').textContent = data.data?.name ?? '-';
+                        document.getElementById('result-id').textContent = data.data?.id ?? '-';
+                        document.getElementById('result-from').textContent = data.data?.from ?? '-';
                         document.getElementById('result-time').textContent = dateNow.toLocaleString('id-ID');
                         // Show result
                         scanResult.classList.remove('hidden');
@@ -133,8 +133,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 html += `
                     <tr class="${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'} hover:bg-gray-100">
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">${index + 1}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${item.name}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">${item.id}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${item.name}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">${item.from}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">${new Date(item.time).toLocaleString('id-ID')}</td>
                         <td class="px-6 py-4 whitespace-nowrap">
                             <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">

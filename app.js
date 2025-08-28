@@ -91,7 +91,8 @@ app.post('/api/absensi', async (req, res) => {
         if (cekData.length > 0) {
             return res.status(200).json({ 
                 success: true,
-                message: 'Anda sudah absen'
+                message: 'Anda sudah absen',
+                data: cekData[0]
             });
         }
         const success = await sql `INSERT INTO undanganku.absensi ( name, from, time, status) VALUES ( ${id},${name}, ${from}, ${time}, ${status}) RETURNING *;`;
@@ -103,7 +104,8 @@ app.post('/api/absensi', async (req, res) => {
         }
         res.status(201).json({ 
             success: true,
-            message: 'Terima kasih atas kehadiran Anda!'
+            message: 'Terima kasih atas kehadiran Anda!',
+            data: success
         });     
     } catch (err) {
         console.log(err);
