@@ -376,7 +376,7 @@ body {
     text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
 }
 
-.couple-name {
+.couple-name-animate {
     transform: scale(0);
     opacity: 0;
 }
@@ -390,7 +390,7 @@ body {
     opacity: 0;
 }
 
-.section-animate.animate-in .couple-name, .section-animate.animate-in .logo img, .section-animate.animate-in .wedding-of h2 {
+.section-animate.animate-in .couple-name-animate, .section-animate.animate-in .logo img, .section-animate.animate-in .wedding-of h2 {
     animation: zoomInText 5s ease-in;
     transform: scale(1);
     opacity: 1;
