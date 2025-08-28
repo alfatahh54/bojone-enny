@@ -87,7 +87,7 @@ app.get('/api/absensi', async (req, res) => {
 app.post('/api/absensi', async (req, res) => {
     const { name, from, time, status } = req.body;
     try {
-        const cekData = await sql `SELECT * FROM undanganku.absensi WHERE name = ${name} AND from = ${from};`;
+        const cekData = await sql `SELECT * FROM undanganku.absensi WHERE name = ${name} AND "from" = ${from};`;
         if (cekData.length > 0) {
             return res.status(200).json({ 
                 success: true,
@@ -95,7 +95,7 @@ app.post('/api/absensi', async (req, res) => {
                 data: cekData[0]
             });
         }
-        const success = await sql `INSERT INTO undanganku.absensi ( name, from, time, status) VALUES ( ${id},${name}, ${from}, ${time}, ${status}) RETURNING *;`;
+        const success = await sql `INSERT INTO undanganku.absensi ( name, "from", time, status) VALUES ( ${name}, ${from}, ${time}, ${status}) RETURNING *;`;
         if (!success) {
             return res.status(500).json({ 
                 success: false,
@@ -105,7 +105,7 @@ app.post('/api/absensi', async (req, res) => {
         res.status(201).json({ 
             success: true,
             message: 'Terima kasih atas kehadiran Anda!',
-            data: success
+            data: success[0]
         });     
     } catch (err) {
         console.log(err);
