@@ -34,12 +34,12 @@ section {
 
 @keyframes zoomInText {
   0% {
-    transform: scale(2);
+    transform: scale(0);
     opacity: 0;
   }
-  50% {
-    transform: scale(2);
-    opacity: 0;
+  25% {
+    transform: scale(0.1);
+    opacity: 0.5;
   }
   100% {
     transform: scale(1);
@@ -771,7 +771,7 @@ body {
     color:#fff;
     /*background: radial-gradient(120% 120% at 0% 0%, #4f86ff 0%, #2563eb 55%, #1e3a8a 100%);*/
     background: radial-gradient(circle at top left, #ffe9f0 -50%, #ffc1cc 30%, #ff9a9e 55%, #e36b6b 80%, #592b2b 120%);
-    padding:20px; display:flex; flex-direction:column; gap:18px;
+    display:flex; flex-direction:column; gap:18px;
 }
 .bank-name{ font-weight:700; letter-spacing:.5px }
 .chip{
@@ -791,7 +791,7 @@ body {
     /*background: linear-gradient(135deg,#0b1220,#1f2937 45%, #0b1220 100%);*/
     background: radial-gradient(circle at top left, #ffe9f0 -50%, #ffc1cc 30%, #ff9a9e 55%, #e36b6b 80%, #592b2b 120%);
     transform:rotateY(180deg);
-    padding:20px; display:flex; flex-direction:column; gap:14px;
+    padding:20px; display:flex; flex-direction:column;gap: 5px;
     position:relative;
 }
 .magnetic-strip{height:46px; background:#d98c8c; border-radius:6px; margin:2px 0 8px}
