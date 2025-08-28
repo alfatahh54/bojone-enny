@@ -494,7 +494,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Boundary checks
         pos.x = (pos.x > giftSection.offsetWidth ? giftSection.offsetWidth : pos.x);
-        pos.y = (pos.y < giftSection.offsetHeight * 0.5 ? giftSection.offsetHeight * 0.5 : pos.y > giftSection.offsetHeight ? giftSection.offsetHeight : pos.y);
+        pos.y = (pos.y < giftSection.offsetHeight * 0.3 ? giftSection.offsetHeight * 0.3 : pos.y > giftSection.offsetHeight ? giftSection.offsetHeight : pos.y);
         const dx = pos.x - prevX;
         const dy = pos.y - prevY;
         const checkAngle = Math.atan2(dy, dx) * (180 / Math.PI);
@@ -529,7 +529,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (giftSection) {
             // create 8 elements butterflies
-            for (let i = 0; i < 8; i++) {
+            for (let i = 0; i < 9; i++) {
                 const wrapper = document.createElement('div');
                 wrapper.classList.add('butterfly_wrapper');
                 wrapper.id = "butterfly-" + i;

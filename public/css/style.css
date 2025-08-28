@@ -7,26 +7,39 @@ section {
     width: 100%;
 }
 
-@keyframes zoomFade {
+@keyframes zoomFade2x {
   0% {
-    transform: scale(0);
+    transform: translateY(33%) scale(1.7);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(33%) scale(1.7);
     opacity: 0;
   }
   100% {
-    transform: scale(3);
-    opacity: 1;
-    animation: pulse 2s ease-in-out infinite;
+    transform: translateY(33%) scale(2);
+    opacity: 0.4;
+  }
+}
+@keyframes zoomFade3x {
+  0% {
+    transform: scale(1.4);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(3.5);
+    opacity: 0.6;
   }
 }
 
 @keyframes zoomInText {
   0% {
-    transform: scale(0);
+    transform: scale(2);
     opacity: 0;
   }
-  25% {
-    transform: scale(0.1);
-    opacity: 0.1;
+  50% {
+    transform: scale(2);
+    opacity: 0;
   }
   100% {
     transform: scale(1);
@@ -76,6 +89,11 @@ section {
     animation: slideRight 1s ease-in-out;
 }
 
+.slide-left-bouquet {
+    animation: slideLeft 1s ease-in-out;
+    top: 45%;
+}
+
 @keyframes floating {
     0% { transform: translateY(0px); }
     50% { transform: translateY(-10px); }
@@ -91,7 +109,25 @@ section {
     50% { transform: scale(1.05); }
 }
 
+@keyframes pulseZoom {
+    0%, 100% { 
+        transform: scale(3); 
+        opacity: 0.6;
+    }
+    50% { 
+        transform: scale(3.05); 
+        opacity: 0.5;
+    }
+}
+
 .top-ornament {
+    position: absolute;
+    overflow: hidden;
+    width: 100%;   
+    z-index: -1;
+    top: -3%;
+}
+.gift-ornament {
     position: absolute;
     overflow: hidden;
     width: 100%;   
@@ -167,13 +203,39 @@ section {
     overflow: hidden;
     /* width: 100%;    */
     height: 100%;   
+    z-index: -2;
+    /* top: -3%; */
+}
+
+.top-ornament1 img {
+    animation: zoomFade3x 6s ease-in-out forwards;
+    animation-delay: 0s, 3.9s; /* zoomFade3x starts immediately, pulse starts after 4s */
+    transform: scale(3.5);
+    opacity: 0.6;
+}
+
+
+.top-ornament1-hover img:hover {
+    animation: none; /* reset first */
+    animation: zoomFade3x 6s ease-in-out forwards;
+    animation-delay: 0s, 3.9s; /* zoomFade3x starts immediately, pulse starts after 4s */
+    transform: scale(3.5);
+    opacity: 0.6;
+}
+
+.welcome-background {
+    position: absolute;
+    overflow: hidden;
+    width: 100%;   
+    height: 100%;   
     z-index: -1;
     /* top: -3%; */
 }
-.top-ornament1 img {
-    animation: zoomFade 5s ease-in-out;
-    transform: scale(3);
-    opacity: 1;
+.welcome-background img {
+    animation: zoomFade2x 5s ease-in-out forwards;
+    animation-delay: 0s; /* zoomFade starts immediately, pulse starts after 4s */
+    transform: translateY(33%) scale(2);
+    opacity: 0.4;
 }
 
 
@@ -191,6 +253,20 @@ section {
     opacity: 1;
 }
 
+.footer-ornament {
+    position: absolute;
+    overflow: hidden;
+    height: 100%;   
+    z-index: -2;
+    top: 0;
+}
+
+.footer-ornament img {
+    animation: pulse 2s ease-in-out infinite;
+    width: 100%;
+}
+
+
 body {
     font-family: 'Josefin Sans', sans-serif;
     background-color: #f8f4ef;
@@ -200,15 +276,6 @@ body {
     transition: all 0.3s ease;
     position: relative;
     overflow-x: hidden;
-}
-.floating-heart {
-    position: absolute;
-    background: url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/tiny-heart.png') no-repeat;
-    width: 20px;
-    height: 20px;
-    animation: float 10s linear infinite;
-    opacity: 0.7;
-    z-index: -1;
 }
 @keyframes float {
     0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
@@ -263,7 +330,7 @@ body {
 }
 
 .hero-section {
-    background: linear-gradient(135deg, rgb(255 156 156 / 11%), rgb(243 179 179 / 11%));
+    /* background: linear-gradient(135deg, rgb(255 156 156 / 11%), rgb(243 179 179 / 11%)); */
     background-blend-mode: overlay;
     position: relative;
     overflow: hidden;
@@ -275,7 +342,6 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    /* background: url('https://i.pinimg.com/originals/9a/7b/71/9a7b71b86d8b8c8c6a6a3a7a2a2a2a7.jpg') center/cover; */
     animation: floatingHearts 30s linear infinite;
     opacity: 0.2;
     display: none;
@@ -287,8 +353,9 @@ body {
 }
 
 .floral-pattern {
-    background-image: url('https://img.pikbest.com/backgrounds/20241211/watercolor-floral-corner-design-pink-roses-delicate-green-leaves-botanical-illustration-_11238116.jpg!sw800');
-    background-size: cover;
+    background-image: url('../assets/princess-carriage.png');
+    /* background-image: url('../assets/bg-footer.jpeg'); */
+    background-size: contain;
     background-position: left bottom;
     background-attachment: fixed;
 }
@@ -308,7 +375,7 @@ body {
     opacity: 1;
 }
 .logo img {
-    animation: zoomInText 4s ease-in;
+    animation: zoomInText 5s ease-in;
     /* transform: scale(1); */
     opacity: 1;
 }
@@ -355,15 +422,15 @@ body {
 
 .heart {
     position: absolute;
-    width: 60px;
-    height: 60px;
-    background-image: url('https://e7.pngegg.com/pngimages/891/246/png-clipart-national-cherry-blossom-festival-flower-heart-flower.png');
+    width: 40px;
+    height: 40px;
+    background-image: url('../assets/sakura.png');
     background-size: contain;
     background-color: transparent;
     background-repeat: no-repeat;
     opacity: 0.8;
     z-index: -1;
-    animation: float-up 8s linear infinite;
+    animation: float-down 8s linear infinite;
 }
 
 .heart:nth-child(1) {
@@ -412,6 +479,22 @@ body {
     }
     100% {
         transform: translateY(-600%) rotate(360deg);
+        opacity: 0;
+    }
+}
+@keyframes float-down {
+    0% {
+        transform: translateY(-1500%) rotate(360deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(0) rotate(0deg);
         opacity: 0;
     }
 }
@@ -668,7 +751,7 @@ body {
     aspect-ratio: 85.60/53.98;
 }
 .card{
-    width:100%; height:100%;
+    width:82%; height:88%;
     position:relative;
     transform-style:preserve-3d;
     transition:transform .8s cubic-bezier(.22,.61,.36,1);
@@ -693,7 +776,7 @@ body {
 .bank-name{ font-weight:700; letter-spacing:.5px }
 .chip{
     width:20%; aspect-ratio: 3/2; border-radius:8px;
-    background:linear-gradient(135deg,#f9d976,#f39f86);
+    background:linear-gradient(135deg, #ffc5ae, #f99d76d1);
     box-shadow:inset 0 0 0 2px rgba(0,0,0,.15);
 }
 .card-number{
@@ -711,7 +794,7 @@ body {
     padding:20px; display:flex; flex-direction:column; gap:14px;
     position:relative;
 }
-.magnetic-strip{height:46px; background:#101010; border-radius:6px; margin:2px 0 8px}
+.magnetic-strip{height:46px; background:#d98c8c; border-radius:6px; margin:2px 0 8px}
 .label{opacity:.65; letter-spacing:.6px; text-transform:uppercase}
 .value{font-weight:600; letter-spacing:2px}
 
