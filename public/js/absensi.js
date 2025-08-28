@@ -46,8 +46,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     // Parse QR content (format: id|nama)
                     const dateNow = new Date()
                     const data = content.split('|');
-                    const id = data[0] || 'ID Tidak Valid';
-                    const name = data[1] || 'Nama Tidak Valid';
+                    const name = data[0] || '';
+                    const from = data[1] || '-';
+
                     
                     // Add to attendance list
                     // attendanceData.unshift({
@@ -56,14 +57,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     //     time,
                     //     status: 'Hadir'
                     // });
+                    if (name === '') {
+                        throw new Error('Invalid QR code format');
+                    }
+                    const id = Math.floor(Math.random() * 1000000);
                     fetch('/api/absensi', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
                         },
                         body: JSON.stringify({
-                            id,
                             name,
+                            from,
                             time: dateNow,
                             status: 'Hadir'
                         })

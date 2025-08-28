@@ -37,10 +37,11 @@ function openPopup() {
   const urlParams = new URLSearchParams(window.location.search);
   let guestLocale = localStorage.getItem('guest');
   const guestName = urlParams.get('to');
+  const guestFrom = urlParams.get('from');
   const id = randomizeString(8);
   if (!guestLocale || (guestLocale && guestLocale.split('|')[1] !== guestName)) {
-    localStorage.setItem('guest', `${id}|${guestName}`);
-    guestLocale = `${id}|${guestName}`;
+    localStorage.setItem('guest', `${guestName}|${guestFrom}`);
+    guestLocale = `${guestName}|${guestFrom}`;
   }
   makeQrCode(guestLocale);
 }

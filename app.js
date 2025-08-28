@@ -85,16 +85,16 @@ app.get('/api/absensi', async (req, res) => {
 });
 
 app.post('/api/absensi', async (req, res) => {
-    const { id, name, time, status } = req.body;
+    const { name, from, time, status } = req.body;
     try {
-        const cekData = await sql `SELECT * FROM undanganku.absensi WHERE id = ${id};`;
+        const cekData = await sql `SELECT * FROM undanganku.absensi WHERE name = ${name} AND from = ${from};`;
         if (cekData.length > 0) {
             return res.status(200).json({ 
                 success: true,
                 message: 'Anda sudah absen'
             });
         }
-        const success = await sql `INSERT INTO undanganku.absensi ( id, name, time, status) VALUES ( ${id},${name}, ${time}, ${status}) RETURNING *;`;
+        const success = await sql `INSERT INTO undanganku.absensi ( name, from, time, status) VALUES ( ${id},${name}, ${from}, ${time}, ${status}) RETURNING *;`;
         if (!success) {
             return res.status(500).json({ 
                 success: false,
