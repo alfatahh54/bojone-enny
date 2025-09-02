@@ -170,27 +170,108 @@ function timeAgo(date) {
 function renderRSVPList(items) {
     const rsvpList = document.getElementById('rsvpList');
     rsvpList.innerHTML = '';
-    
+
     if (items.length === 0) {
         rsvpList.innerHTML = '<p class="text-center text-gray-500">Belum ada konfirmasi kehadiran.</p>';
         return;
     }
-    
-    items.forEach(item => {
-        const rsvpItem = document.createElement('div');
-        rsvpItem.className = 'mb-4 p-4 bg-gray-50 rounded-lg border border-gray-200';
-        rsvpItem.innerHTML = `
+
+    // Create container for swipe cards
+    const swipeContainer = document.createElement('div');
+    swipeContainer.className = 'swipe-container relative mb-4';
+
+    items.forEach((item, index) => {
+        const card = document.createElement('div');
+        card.className = 'rsvp-card absolute top-0 left- w-full p-6 rounded-lg shadow-lg bg-white border border-gray-300 transition-transform duration-300 ease-in-out cursor-grab select-none overflow-y-auto';
+        card.style.zIndex = items.length - index;
+        card.style.transform = `rotate(${(index % 2 === 0 ? 1 : -1) * (Math.random() * 4)}deg) translateY(${index * 1}px)`;
+        card.style.boxShadow = `0 ${index * 2}px ${index * 4}px rgba(0,0,0,0.15)`;
+
+        card.innerHTML = `
             <div class="flex justify-between mb-2">
                 <span class="font-bold text-gray-800">${item.name}</span>
                 <span class="text-sm ${item.attending ? 'text-green-600' : 'text-red-600'}">
-                    ${item.attending  ? 'Hadir' : 'Tidak Hadir'}
+                    ${item.attending ? 'Hadir' : 'Tidak Hadir'}
                 </span>
             </div>
+            <div class="h-[50px] overflow-scroll">
             ${item.message ? `<p class="text-gray-700 italic">"${item.message}"</p>` : ''}
+            </div>
             <p class="text-xs text-gray-500 mt-2">${timeAgo(new Date(item.createdAt))}</p>
         `;
-        rsvpList.appendChild(rsvpItem);
+
+        swipeContainer.appendChild(card);
     });
+
+    rsvpList.appendChild(swipeContainer);
+
+    // Swipe functionality
+    let startX = 0;
+    let currentX = 0;
+    let isDragging = false;
+    let currentCardIndex = 0;
+    const cards = swipeContainer.querySelectorAll('.rsvp-card');
+
+    function setCardPosition(card, offsetX, rotation) {
+        card.style.transform = `translateX(${offsetX}px) rotate(${rotation}deg)`;
+        card.style.transition = isDragging ? 'none' : 'transform 0.3s ease';
+    }
+
+    function handleGestureStart(e) {
+        if (currentCardIndex >= cards.length) return;
+        isDragging = true;
+        startX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+        cards[currentCardIndex].style.cursor = 'grabbing';
+    }
+
+    function handleGestureMove(e) {
+        if (!isDragging || currentCardIndex >= cards.length) return;
+        currentX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+        const deltaX = currentX - startX;
+        const rotation = deltaX / 20;
+        setCardPosition(cards[currentCardIndex], deltaX, rotation);
+    }
+
+    function handleGestureEnd() {
+        if (!isDragging || currentCardIndex >= cards.length) return;
+        isDragging = false;
+        const card = cards[currentCardIndex];
+        const transformMatrix = window.getComputedStyle(card).transform;
+        const translateX = transformMatrix !== 'none' ? parseFloat(transformMatrix.split(',')[4]) : 0;
+
+        if (Math.abs(translateX) > card.offsetWidth / 3) {
+            // Swipe off
+            const direction = translateX > 0 ? 1 : -1;
+            card.style.transition = 'transform 0.5s ease';
+            setCardPosition(card, direction * window.innerWidth, direction * 30);
+            currentCardIndex++;
+            if (currentCardIndex >= cards.length) {
+                // Load next page
+                const rsvpList = document.getElementById('rsvpList');
+                rsvpList.innerHTML = '<p class="text-center text-gray-500">Loading more RSVPs...</p>';
+                let nextPage = currentPage < totalPages ? currentPage + 1 : 1;
+                currentPage = nextPage;
+                loadRSVPs(currentPage);
+            }
+            setTimeout(() => {
+                card.style.display = 'none';
+            }, 500);
+        } else {
+            // Return to center
+            setCardPosition(card, 0, 0);
+        }
+        card.style.cursor = 'grab';
+    }
+
+    swipeContainer.addEventListener('mousedown', handleGestureStart);
+    swipeContainer.addEventListener('touchstart', handleGestureStart);
+
+    swipeContainer.addEventListener('mousemove', handleGestureMove);
+    swipeContainer.addEventListener('touchmove', handleGestureMove);
+
+    swipeContainer.addEventListener('mouseup', handleGestureEnd);
+    swipeContainer.addEventListener('touchend', handleGestureEnd);
+    swipeContainer.addEventListener('touchcancel', handleGestureEnd);
 }
 
 function updatePaginationControls(totalItems, totalPages) {
@@ -214,19 +295,19 @@ function showToast(message) {
     }, 3000);
 }
 
-document.getElementById('prevPage').addEventListener('click', () => {
-    if (currentPage > 1) {
-        currentPage--;
-        loadRSVPs(currentPage);
-    }
-});
+// document.getElementById('prevPage').addEventListener('click', () => {
+//     if (currentPage > 1) {
+//         currentPage--;
+//         loadRSVPs(currentPage);
+//     }
+// });
 
-document.getElementById('nextPage').addEventListener('click', () => {
-    if (currentPage < totalPages) {
-        currentPage++;
-        loadRSVPs(currentPage);
-    }
-});
+// document.getElementById('nextPage').addEventListener('click', () => {
+//     if (currentPage < totalPages) {
+//         currentPage++;
+//         loadRSVPs(currentPage);
+//     }
+// });
 
 // Copy to clipboard function
 function copyToClipboard(text) {

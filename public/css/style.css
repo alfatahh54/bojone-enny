@@ -832,3 +832,71 @@ body {
 }
 .copy-btn:hover{ transform:translateY(-1px) }
 .copy-btn:active{ transform:translateY(0) scale(.98) }
+
+/* RSVP Swipe Styles */
+.swipe-container {
+    height: 180px;
+    /* position: relative; */
+    /* overflow: hidden; */
+    /* border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); */
+}
+
+.rsvp-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border: 1px solid #e9ecef;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    user-select: none;
+    touch-action: none;
+}
+
+.rsvp-card:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.rsvp-card:active {
+    transform: scale(0.98);
+}
+
+/* Parallax background effect */
+.swipe-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(255, 182, 193, 0.1) 0%, rgba(255, 228, 225, 0.1) 100%);
+    z-index: -1;
+    transform: translateX(0);
+    transition: transform 0.3s ease;
+}
+
+.swipe-container.dragging::before {
+    transform: translateX(-10px);
+}
+
+/* Swipe indicators */
+.swipe-indicator {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    color: rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.swipe-indicator.left {
+    left: 20px;
+}
+
+.swipe-indicator.right {
+    right: 20px;
+}
+
+.swipe-container:hover .swipe-indicator {
+    opacity: 1;
+}
