@@ -900,3 +900,7 @@ body {
 .swipe-container:hover .swipe-indicator {
     opacity: 1;
 }
+
+.overflow-scroll::-webkit-scrollbar {
+    display: none;
+}
