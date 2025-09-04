@@ -490,13 +490,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Buat kelopak setiap 1000ms
     setInterval(createPetal, 3000);
 
-    const footer = document.querySelector('.floral-pattern');
-    
-    footer.addEventListener('click', function(e) {
-        if (e.target === footer) {
-            createHeart(e.clientX, e.clientY);
-        }
-    });
     
     function createHeart(x, y) {
         const heart = document.createElement('div');
@@ -524,7 +517,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const openInvitationButton = document.getElementById('open-invitation-button');
 
     // Get all sections that should be hidden initially
-    const hiddenSections = document.querySelectorAll('body > div > section:not(#invitation-section), footer, #hidden-section');
+    const hiddenSections = document.querySelectorAll('body > div > section:not(#invitation-section), #hidden-section');
 
     if (guestName) {
         guestNameElement.textContent = guestName;

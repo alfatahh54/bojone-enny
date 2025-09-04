@@ -227,19 +227,19 @@
                     <form id="rsvpForm" class="text-sm mb-8 transition-all duration-500 rounded-xl">
                         <div class="mb-4">
                             <!-- <label class="block text-gray-700 font-bold mb-2" for="name">Nama Anda</label> -->
-                            <input placeholder="Nama Kamu" class="shadow appearance-none w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline placeholder-[#fd6f6f] text-pinky bg-[#ffe1e0] rounded-full" id="name" type="text" required>
+                            <input placeholder="Nama Kamu" class="shadow appearance-none w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline placeholder-[#f09999] text-[#e72923ab] bg-[#ffe1e0] rounded-full" id="name" type="text" required>
                         </div>
                         <div class="mb-4">
                             <!-- <label class="block font-bold mb-2">Kehadiran</label> -->
                             <ul class="grid w-full gap-6 grid-cols-2">
                                 <li>
-                                    <label for="hadir" class="inline-flex h-full items-center w-full p-2 text-pinky border border-[#ffaba8] rounded-lg cursor-pointer hover:text-pinky hover:bg-[#ffe1e0]">
-                                        <input type="radio" id="hadir" name="attendance" value="true" class="sr-only peer" />
+                                    <input type="radio" id="hadir" name="attendance" value="true" class="sr-only peer" />
+                                    <label for="hadir" class="inline-flex h-full items-center w-full p-2 text-pinky border border-[#ffaba8] rounded-lg cursor-pointer hover:text-pinky hover:bg-[#ffe1e0] peer-checked:bg-[#ffe1e0] peer-checked:border-[#e72923ab] peer-checked:text-[#e72923ab]">
                                         
                                         <!-- Custom Radio Indicator -->
-                                        <div class="w-4 h-4 mr-2 rounded-full border-2 border-[#ffaba8] flex items-center justify-center peer-checked:bg-[#ffaba8]">
+                                        <!-- <div class="w-4 h-4 mr-2 rounded-full border-2 border-[#ffaba8] flex items-center justify-center peer-checked:bg-[#e72923ab] peer-checked:border-[#e72923ab]">
                                             <div class="w-2 h-2 bg-white rounded-full"></div>
-                                        </div>
+                                        </div> -->
 
                                         <div class="block">
                                             <div class="w-full font-semibold">Hadir</div>
@@ -247,13 +247,13 @@
                                     </label>
                                 </li>
                                 <li>
-                                    <label for="tidak-hadir" class="inline-flex h-full items-center w-full p-2 text-pinky border border-[#ffaba8] rounded-lg cursor-pointer hover:text-pinky hover:bg-[#ffe1e0]">
-                                        <input type="radio" id="tidak-hadir" name="attendance" value="false" class="sr-only peer" />
+                                    <input type="radio" id="tidak-hadir" name="attendance" value="false" class="sr-only peer" />
+                                    <label for="tidak-hadir" class="inline-flex h-full items-center w-full p-2 text-pinky border border-[#ffaba8] rounded-lg cursor-pointer hover:text-pinky hover:bg-[#ffe1e0] peer-checked:bg-[#ffe1e0] peer-checked:border-[#e72923ab] peer-checked:text-[#e72923ab]">
                                         
                                         <!-- Custom Radio Indicator -->
-                                        <div class="w-4 h-4 mr-2 rounded-full border-2 border-[#ffaba8] flex items-center justify-center peer-checked:bg-[#ffaba8]">
+                                        <!-- <div class="w-4 h-4 mr-2 rounded-full border-2 border-[#ffaba8] flex items-center justify-center peer-checked:bg-[#e72923ab] peer-checked:border-[#e72923ab]">
                                             <div class="w-2 h-2 bg-white rounded-full"></div>
-                                        </div>
+                                        </div> -->
 
                                         <div class="block">
                                             <div class="w-full font-semibold">Tidak Hadir</div>
@@ -265,7 +265,7 @@
                         </div>
                         <div class="mb-6">
                             <!-- <label class="block font-bold mb-2" for="message">Pesan/Ucapan</label> -->
-                            <textarea placeholder="Pesan/Ucapan untuk kami" class="shadow appearance-none w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline  placeholder-[#fd6f6f] text-pinky bg-[#ffe1e0] rounded-lg px-2" id="message" rows="3"></textarea>
+                            <textarea placeholder="Pesan/Ucapan untuk kami" class="shadow appearance-none w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline  placeholder-[#f09999] text-[#e72923ab] bg-[#ffe1e0] rounded-lg px-2" id="message" rows="3"></textarea>
                         </div>
                         <div class="flex justify-center">
                             <button type="submit" class="btn-primary bg-[#e27e7e] hover:bg-[#e78e8e] text-white font-bold py-2 px-6 rounded-full text-sm">Kirim Konfirmasi</button>
@@ -277,8 +277,10 @@
                         <span class="block sm:inline">Konfirmasi kehadiran Anda sudah kami terima.</span>
                     </div>
                     
-                    <div class="rsvp-list-section mt-12">
-                        <h3 class="text-xl font-bold mb-4 text-center text-gray-800">Daftar Konfirmasi</h3>
+                </div>
+
+                    <div class="rsvp-list-section mt-12 px-4">
+                        <h3 class="text-3xl font-sacrramento font-bold text-center mb-4 text-gray-800 py-10">Kabar Konfirmasi</h3>
                         <div id="rsvpList" class="mb-4"></div>
                         <div class="flex justify-between items-center">
                             <!-- <button id="prevPage" class="bg-[#e27e7e] hover:bg-[#e78e8e] text-white font-bold text-sm py-2 px-4 rounded-l">
@@ -290,7 +292,6 @@
                             </button> -->
                         </div>
                     </div>
-                </div>
             </div>
         </section>
         
@@ -396,8 +397,8 @@
         
         <!-- Closing Section -->
         <section class="hidden h-screen pt-20 pb-20 bg-[length:35%] bg-no-repeat section-animate relative overflow-hidden">
-            <div class="footer-ornament">
-                <img src="./assets/hanging-sakura.png" alt="footer-ornament">
+            <div class="footer-ornament flex flex-col items-end">
+                <img src="./assets/hanging-sakura.png" alt="footer-ornament" class="w-sm-70 w-md-100">
             </div>
             
             <div class="flex flex-col h-full justify-end mx-auto px-4 text-center relative z-10 pt-10">
@@ -412,7 +413,8 @@
                     <p class="text-gray-600 bg-opacity-70 py-2 px-6 inline-block">Beserta Keluarga</p>
                 </div>
             </div>
-            <div class="absolute z-[-1] bottom-0 floral-pattern w-[30%] aspect-square"></div>
+            
+            <div class="absolute z-[-1] bottom-0 princess-carriage w-[30%] aspect-square"></div>
             
             <!-- Floating hearts animation -->
             <div class="floating-hearts-container z-[-2]">
