@@ -27,4 +27,4 @@ Projek ini adalah sebuah halaman web undangan pernikahan yang interaktif dan men
 
 ## Kontribusi
 
-Jika Anda ingin berkontribusi pada projek ini, silakan fork repository ini dan buat pull request dengan perubahan yang Anda inginkan.
+Jika Anda ingin berkontribusi pada projek ini, silakan fork repository ini dan buat pull request dengan perubahan yang Anda inginkan..
