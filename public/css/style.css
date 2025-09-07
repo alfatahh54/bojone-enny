@@ -518,9 +518,6 @@ body {
 
 /* Music Balloon */
 .music-balloon {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
     background-color: #d4a76a;
     border-radius: 50%;
     width: 40px;
@@ -529,7 +526,6 @@ body {
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    z-index: 1000;
     transition: transform 0.3s ease-in-out;
 }
 
