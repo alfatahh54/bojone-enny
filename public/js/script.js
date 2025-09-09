@@ -109,15 +109,15 @@ document.getElementById('rsvpForm').addEventListener('submit', function(e) {
     const attending = document.querySelector('input[name="attendance"]:checked').value;
     const message = document.getElementById('message').value;
     if(!name) {
-        showToast('Nama harus diisi');
+        showToast('Nama harus diisi', 'error');
         return;
     }
     if(containsHtmlTags(name)) {
-        showToast('Tidak boleh menggunakan tag HTML');
+        showToast('Tidak boleh menggunakan tag HTML', 'error');
         return;
     }
     if (containsHtmlTags(message)) {
-        showToast('Tidak boleh menggunakan tag HTML');
+        showToast('Tidak boleh menggunakan tag HTML', 'error');
         return;
     }
     const rsvpData = {
@@ -299,10 +299,19 @@ function updatePaginationControls(totalItems, totalPages) {
 
 function showToast(message, type = 'success') {
     const toast = document.getElementById('toast');
+    const toasContent = document.getElementById('toast-content');
     const toastMsg = document.getElementById('toast-message');
     toastMsg.textContent = message;
     toast.classList.remove('hidden');
     // toast.classList.add('flex');
+    
+    if (type === 'success') {
+        toasContent.classList.add('bg-green-500');
+        toasContent.classList.remove('bg-red-500');
+    } else {
+        toasContent.classList.add('bg-red-500');
+        toasContent.classList.remove('bg-green-500');
+    }
     
     setTimeout(() => {
         toast.classList.add('hidden');
