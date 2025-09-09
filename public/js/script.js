@@ -98,13 +98,28 @@ document.querySelector('.scroll-down-btn').addEventListener('click', () => {
 });
 
 // RSVP Form Handling
+function containsHtmlTags(str) {
+  return /<[^>]+>/.test(str); // sederhana: ada sesuatu di antara < >
+}
+
 document.getElementById('rsvpForm').addEventListener('submit', function(e) {
     e.preventDefault();
     
     const name = document.getElementById('name').value;
     const attending = document.querySelector('input[name="attendance"]:checked').value;
     const message = document.getElementById('message').value;
-    
+    if(!name) {
+        showToast('Nama harus diisi');
+        return;
+    }
+    if(containsHtmlTags(name)) {
+        showToast('Tidak boleh menggunakan tag HTML');
+        return;
+    }
+    if (containsHtmlTags(message)) {
+        showToast('Tidak boleh menggunakan tag HTML');
+        return;
+    }
     const rsvpData = {
         name,
         attending,
@@ -149,7 +164,7 @@ function loadRSVPs(page=1) {
         totalPages = data.totalPages
         
         renderRSVPList(data.items);
-        updatePaginationControls(data.total, totalPages);
+        // updatePaginationControls(data.total, totalPages);
     });
 }
 function timeAgo(date) {
@@ -282,7 +297,7 @@ function updatePaginationControls(totalItems, totalPages) {
     document.getElementById('nextPage').disabled = currentPage === totalPages;
 }
 
-function showToast(message) {
+function showToast(message, type = 'success') {
     const toast = document.getElementById('toast');
     const toastMsg = document.getElementById('toast-message');
     toastMsg.textContent = message;
