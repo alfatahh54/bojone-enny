@@ -15,8 +15,17 @@ app.use(bodyParser.json());
 // app.use(express.static(path.join(__dirname, 'public')));
 
 // API untuk RSVP
+function containsHtmlTags(str) {
+  return /<[^>]+>/.test(str); // sederhana: ada sesuatu di antara < >
+}
 app.post('/api/rsvp', async (req, res) => {
     const { name, message, attending } = req.body;
+    if (containsHtmlTags(name) || containsHtmlTags(message)) {
+        return res.status(400).json({ 
+            success: false,
+            message: 'Tidak boleh menggunakan tag HTML'
+        });
+    }
     if (!name) {
         return res.status(400).json({ 
             success: false,
