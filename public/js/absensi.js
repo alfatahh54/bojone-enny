@@ -174,7 +174,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 switchCameraBtn.classList.remove('hidden');
             }
             if (cameras.length > 0) {
-                scanner.start(cameras[0]);
+                let backCam = cameras.find(cam => /back|rear/i.test(cam.name));
+                if (backCam) {
+                    scanner.start(backCam);
+                    console.log("Menggunakan kamera belakang:", backCam.name);
+                } else {
+                    scanner.start(cameras[0]);
+                    console.log("Kamera belakang tidak ada, pakai kamera pertama.");
+                }
                 startBtn.disabled = true;
                 stopBtn.disabled = false;
                 switchCameraBtn.disabled = false;
