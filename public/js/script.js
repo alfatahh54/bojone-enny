@@ -210,7 +210,7 @@ function renderRSVPList(items) {
                 </span>
             </div>
             <div class="h-[50px] overflow-scroll">
-            ${item.message ? `<p class="text-gray-700 italic">"${item.message}"</p>` : ''}
+            ${item.message ? `<p class="text-gray-700 italic">"${item.message.toString()}"</p>` : ''}
             </div>
             <p class="text-xs text-gray-500 mt-2">${timeAgo(new Date(item.createdAt))}</p>
         `;

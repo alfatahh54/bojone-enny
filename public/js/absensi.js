@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const scannerStatus = document.getElementById('scanner-status');
     const scanResult = document.getElementById('scan-result');
     const attendanceList = document.getElementById('attendance-list');
-    const clearDataBtn = document.getElementById('clear-data');
+    // const clearDataBtn = document.getElementById('clear-data');
     const switchCameraBtn = document.getElementById('switch-camera');   
     
     let attendanceData = JSON.parse(localStorage.getItem('attendanceData')) || [];
@@ -211,14 +211,14 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Clear all data
-    clearDataBtn.addEventListener('click', function() {
-        if (confirm('Apakah Anda yakin ingin menghapus semua data absensi?')) {
-            attendanceData = [];
-            localStorage.removeItem('attendanceData');
-            updateAttendanceTable();
-            scanResult.classList.add('hidden');
-        }
-    });
+    // clearDataBtn.addEventListener('click', function() {
+    //     if (confirm('Apakah Anda yakin ingin menghapus semua data absensi?')) {
+    //         attendanceData = [];
+    //         localStorage.removeItem('attendanceData');
+    //         updateAttendanceTable();
+    //         scanResult.classList.add('hidden');
+    //     }
+    // });
 
     // Switch camera
     document.getElementById('switch-camera').addEventListener('click', function() {
