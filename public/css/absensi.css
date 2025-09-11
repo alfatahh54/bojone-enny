@@ -1,3 +1,145 @@
+/* Wedding Theme Styles for Absensi Page */
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ffe1e0 0%, #ffc6c6 100%);
+    min-height: 100vh;
+}
+
+.wedding-header {
+    font-family: 'Sacramento', cursive;
+    color: #e27e7e;
+}
+
+.wedding-text {
+    color: #e27e7e;
+}
+
+.wedding-bg {
+    background: rgba(255, 225, 224, 0.8);
+    backdrop-filter: blur(10px);
+}
+
+/* Primary Action Button - Start Scan */
+.wedding-button-primary {
+    background: linear-gradient(135deg, #e27e7e 0%, #e78e8e 100%);
+    border: none;
+    border-radius: 25px;
+    color: white;
+    font-weight: 600;
+    padding: 12px 24px;
+    font-size: 14px;
+    min-width: 140px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(226, 126, 126, 0.3);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.wedding-button-primary:hover {
+    background: linear-gradient(135deg, #e78e8e 0%, #e27e7e 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(226, 126, 126, 0.4);
+}
+
+/* Secondary Action Button - Stop Scan */
+.wedding-button-secondary {
+    background: linear-gradient(135deg, #6b7280 0%, #9ca3af 100%);
+    border: none;
+    border-radius: 25px;
+    color: white;
+    font-weight: 600;
+    padding: 12px 24px;
+    font-size: 14px;
+    min-width: 140px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(107, 114, 128, 0.3);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.wedding-button-secondary:hover {
+    background: linear-gradient(135deg, #9ca3af 0%, #6b7280 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(107, 114, 128, 0.4);
+}
+
+/* Neutral Action Button - Switch Camera */
+.wedding-button-neutral {
+    background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
+    border: none;
+    border-radius: 25px;
+    color: white;
+    font-weight: 600;
+    padding: 12px 24px;
+    font-size: 14px;
+    min-width: 140px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.wedding-button-neutral:hover {
+    background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+}
+
+/* Success State Button */
+.wedding-button-success {
+    background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+    border: none;
+    border-radius: 25px;
+    color: white;
+    font-weight: 600;
+    padding: 12px 24px;
+    font-size: 14px;
+    min-width: 140px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.wedding-button-success:hover {
+    background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+}
+
+.wedding-card {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(226, 126, 126, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(226, 126, 126, 0.1);
+}
+
+.wedding-input {
+    background: rgba(255, 225, 224, 0.8);
+    border: 2px solid rgba(240, 153, 153, 0.3);
+    border-radius: 25px;
+    color: rgba(231, 41, 35, 0.7);
+    font-weight: 500;
+}
+
+.wedding-input:focus {
+    border-color: #e27e7e;
+    box-shadow: 0 0 0 3px rgba(226, 126, 126, 0.1);
+}
+
 .scanner-container {
     position: relative;
     width: 100%;
@@ -6,8 +148,9 @@
     padding-bottom: 320px;
     overflow: hidden;
     background: #000;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(226, 126, 126, 0.2);
+    border: 3px solid rgba(226, 126, 126, 0.3);
 }
 
 .scanner-video {
@@ -19,6 +162,7 @@
     max-width: 320px;
     max-height: 320px;
     object-fit: cover;
+    border-radius: 17px;
 }
 
 .scan-animation {
@@ -27,9 +171,9 @@
     left: 0;
     width: 100%;
     height: 2px;
-    background: linear-gradient(to right, transparent, #4ade80, transparent);
+    background: linear-gradient(to right, transparent, #e27e7e, transparent);
     animation: scan 2.5s infinite linear;
-    box-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
+    box-shadow: 0 0 10px rgba(226, 126, 126, 0.5);
 }
 
 .frame {
@@ -39,8 +183,8 @@
     transform: translate(-50%, -50%);
     width: 70%;
     height: 70%;
-    border: 3px dashed rgba(255, 255, 255, 0.3);
-    border-radius: 8px;
+    border: 3px dashed rgba(255, 255, 255, 0.4);
+    border-radius: 12px;
     pointer-events: none;
 }
 
@@ -51,9 +195,41 @@
 
 .loading-spinner {
     animation: spin 1s linear infinite;
+    border-color: #e27e7e;
+    border-top-color: rgba(226, 126, 126, 0.3);
 }
 
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+.floral-decoration {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 60px;
+    height: 60px;
+    opacity: 0.6;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+.heart-decoration {
+    position: absolute;
+    bottom: -10px;
+    left: -10px;
+    width: 30px;
+    height: 30px;
+    opacity: 0.4;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
 }
