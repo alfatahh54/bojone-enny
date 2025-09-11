@@ -204,7 +204,7 @@ function renderRSVPList(items) {
 
         card.innerHTML = `
             <div class="flex justify-between mb-2">
-                <span class="font-bold text-gray-800">${item.name}</span>
+                <span class="font-bold text-gray-800">${item.name ? item.name.toString() : 'Anonim'}</span>
                 <span class="text-sm ${item.attending ? 'text-green-600' : 'text-red-600'}">
                     ${item.attending ? 'Hadir' : 'Tidak Hadir'}
                 </span>
