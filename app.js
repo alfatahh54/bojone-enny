@@ -111,6 +111,9 @@ app.post('/api/absensi', async (req, res) => {
                 message: 'Gagal absen'
             });
         }
+        // Broadcast new attendance data to SSE clients
+        broadcastAttendance(success[0]);
+
         res.status(201).json({ 
             success: true,
             message: 'Terima kasih atas kehadiran Anda!',
@@ -125,6 +128,35 @@ app.post('/api/absensi', async (req, res) => {
         });
     }
 })
+
+const clients = [];
+
+app.get('/api/absensi/stream', (req, res) => {
+    res.set({
+        'Content-Type': 'text/event-stream',
+        'Cache-Control': 'no-cache',
+        'Connection': 'keep-alive',
+        'Access-Control-Allow-Origin': '*'
+    });
+    res.flushHeaders();
+
+    const clientId = Date.now();
+    const newClient = {
+        id: clientId,
+        res
+    };
+    clients.push(newClient);
+
+    req.on('close', () => {
+        clients.splice(clients.findIndex(c => c.id === clientId), 1);
+    });
+});
+
+function broadcastAttendance(data) {
+    clients.forEach(client => {
+        client.res.write(`data: ${JSON.stringify(data)}\n\n`);
+    });
+}
 
 // Serve the main HTML file
 // app.get('/', (req, res) => {

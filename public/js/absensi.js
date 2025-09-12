@@ -241,5 +241,38 @@ document.addEventListener('DOMContentLoaded', function() {
     scannerStatus.textContent = 'Tidak Aktif';
     scannerStatus.className = 'px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800';
 
-    
+    // Realtime attendance update using SSE
+    const eventSource = new EventSource('/api/absensi/stream');
+    eventSource.onmessage = function(event) {
+        const newAttendance = JSON.parse(event.data);
+        // Add new attendance to the list and update table
+        attendanceData.unshift(newAttendance);
+        // Limit to latest 50 records to avoid memory bloat
+        if (attendanceData.length > 50) {
+            attendanceData.pop();
+        }
+        // Re-render attendance table
+        let html = '';
+        attendanceData.forEach((item, index) => {
+            html += `
+                <tr class="${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'} hover:bg-gray-100">
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">${index + 1}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">${item.id}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${item.name}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">${item.from}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">${new Date(item.time).toLocaleString('id-ID')}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                            ${item.status}
+                        </span>
+                    </td>
+                </tr>
+            `;
+        });
+        attendanceList.innerHTML = html;
+    };
+    eventSource.onerror = function(err) {
+        console.error('EventSource failed:', err);
+        eventSource.close();
+    };
 });
