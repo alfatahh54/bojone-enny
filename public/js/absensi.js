@@ -245,7 +245,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const eventSource = new EventSource('/api/absensi/stream');
     eventSource.onmessage = function(event) {
         const newAttendance = JSON.parse(event.data);
-        console.log('New attendance:', newAttendance);
         
         // Add new attendance to the list and update table
         attendanceData.unshift(newAttendance);
