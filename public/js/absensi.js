@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (attendanceData.length === 0) {
                 attendanceList.innerHTML = `
                     <tr>
-                        <td colspan="6" class="px-6 py-4 text-center text-gray-500">Belum ada data absensi</td>
+                        <td colspan="6" class="px-6 py-8 text-center wedding-text opacity-60 italic">Belum ada data konfirmasi kehadiran</td>
                     </tr>
                 `;
                 return;
