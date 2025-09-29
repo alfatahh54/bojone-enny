@@ -27,7 +27,7 @@
             <h2 class="mb-2 text-sm text-pinky">Yth. Bapak/Ibu/Saudara/i,</h2>
             <h3 id="guest-name" class="title-font font-bold text-lg text-pinky capitalize">Tamu Undangan</h3>
             <p class="mb-4 text-sm text-pinky">Dengan hormat, kami mengundang Anda untuk hadir di acara pernikahan kami.</p>
-            <button id="open-invitation-button" class="btn-primary bg-[#e27e7e] hover:bg-[#e78e8e] text-white px-6 py-2 rounded-full text-sm animate-none">
+            <button id="open-invitation-button" class="btn-primary bg-[#e27e7e] hover:bg-[#e78e8e] active:bg-[#e78e8e] text-white px-6 py-2 rounded-full text-sm animate-none">
                <i class="fa-solid fa-envelope-open animate-bounce"></i> Buka Undangan
             </button>
         </div>
@@ -64,9 +64,9 @@
                             <div class="countdown-item py-2 px-2 rounded-lg bg-[#ffc6c6]/30"><span id="seconds">00</span> Detik</div>
                         </div>
                     </div>
-                    <button id="save-to-calendar" class="btn-primary bg-[#e27e7e] hover:bg-[#e78e8e] text-white font-bold py-2 px-6 rounded-full text-sm">Simpan ke Kalender</button>
+                    <button id="save-to-calendar" class="btn-primary bg-[#e27e7e] hover:bg-[#e78e8e] active:bg-[#e78e8e] text-white font-bold py-2 px-6 rounded-full text-sm">Simpan ke Kalender</button>
                     <!-- Tombol untuk membuka popup -->
-                    <button id="qr-code-button" class="hidden btn-primary bg-[#e27e7e] hover:bg-[#e78e8e] text-white font-bold py-2 px-6 rounded-full text-sm">Tampilkan QR Code</button>
+                    <button id="qr-code-button" class="hidden btn-primary bg-[#e27e7e] hover:bg-[#e78e8e] active:bg-[#e78e8e] text-white font-bold py-2 px-6 rounded-full text-sm">Tampilkan QR Code</button>
                 </div>
             </div>
             
@@ -89,7 +89,7 @@
                 <h2 class="font-esthetic py-4 m-0 text-lg">Assalamualaikum Warahmatullahi Wabarakatuh</h2>
                 <p class="pb-4 px-2 m-0">Tanpa mengurangi rasa hormat, kami mengundang Anda untuk berkenan menghadiri acara pernikahan kami:</p>
                 <div class="flex flex-col justify-center items-center gap-12">
-                    <div class="couple-card hover:scale-105 slide-right">
+                    <div class="couple-card hover:scale-105 active:scale-105 slide-right">
                         <div class="w-[60%] h-[60%] mx-auto rounded-full overflow-hidden border-4 border-[#d4a4a0] shadow-lg mb-6">
                             <img src="./assets/man.png" 
                                 alt="Man" class="w-full h-full object-cover">
@@ -100,7 +100,7 @@
 
                     <!-- <div class="text-5xl text-pinky hidden md:block">❤️</div> -->
 
-                    <div class="couple-card hover:scale-105 slide-left">
+                    <div class="couple-card hover:scale-105 active:scale-105 slide-left">
                         <div class="w-[60%] h-[60%] mx-auto rounded-full overflow-hidden border-4 border-[#d4a4a0] shadow-lg mb-6">
                             <img src="./assets/woman.png" 
                                 alt="Woman" class="w-full h-full object-cover">
@@ -184,7 +184,7 @@
                             <p class="mt-2">KUA Padamara</p>
                             <p class="text-sm">Jalan Raya Padamara No. 30, Bojanegara, Padamara, Dusun 3, Purbalingga Lor, Kec. Purbalingga, Kabupaten Purbalingga, Jawa Tengah 53372</p>
                         </div>
-                        <button class="mt-4 bg-[#e27e7e] hover:bg-[#e78e8e] text-white font-bold text-sm py-2 px-4 rounded" onclick="openMap('akad')">Lihat Peta</button>
+                        <button class="mt-4 bg-[#e27e7e] hover:bg-[#e78e8e] active:bg-[#e78e8e] text-white font-bold text-sm py-2 px-4 rounded" onclick="openMap('akad')">Lihat Peta</button>
                         <!-- <div class="bottom-ornament bottom-[-3%] w-80">
                             <img src="./assets/border-pita-bawah.png" class="opacity-45" style="animation: none;" alt="">
                         </div> -->
@@ -207,7 +207,7 @@
                             <p class="mt-2">Kampung Kecil Sawangan</p>
                             <p class="text-sm">Ruko Pancoran Mas, Jl. Raya Sawangan No.81, RT.1/RW.9, Mampang, Kec. Pancoran Mas, Kota Depok, Jawa Barat 16511</p>
                         </div>
-                        <button class="mt-4 mb-12 bg-[#e27e7e] text-sm hover:bg-[#e78e8e] text-white font-bold py-2 px-4 rounded" onclick="openMap('resepsi')">Lihat Peta</button>
+                        <button class="mt-4 mb-12 bg-[#e27e7e] text-sm hover:bg-[#e78e8e] active:bg-[#e78e8e] text-white font-bold py-2 px-4 rounded" onclick="openMap('resepsi')">Lihat Peta</button>
                         <!-- <div class="bottom-ornament bottom-[-3%] w-80">
                             <img src="./assets/border-pita-bawah.png" class="opacity-45" style="animation: none;" alt="">
                         </div> -->
@@ -234,7 +234,7 @@
                             <ul class="grid w-full gap-6 grid-cols-2">
                                 <li>
                                     <input type="radio" id="hadir" name="attendance" value="true" class="sr-only peer" />
-                                    <label for="hadir" class="inline-flex h-full items-center w-full p-2 text-pinky border border-[#ffaba8] rounded-lg cursor-pointer hover:text-pinky hover:bg-[#ffe1e0] peer-checked:bg-[#ffe1e0] peer-checked:border-[#e72923ab] peer-checked:text-[#e72923ab]">
+                                    <label for="hadir" class="inline-flex h-full items-center w-full p-2 text-pinky border border-[#ffaba8] rounded-lg cursor-pointer hover:text-pinky hover:bg-[#ffe1e0] active:text-pinky active:bg-[#ffe1e0] peer-checked:bg-[#ffe1e0] peer-checked:border-[#e72923ab] peer-checked:text-[#e72923ab]">
                                         
                                         <!-- Custom Radio Indicator -->
                                         <!-- <div class="w-4 h-4 mr-2 rounded-full border-2 border-[#ffaba8] flex items-center justify-center peer-checked:bg-[#e72923ab] peer-checked:border-[#e72923ab]">
@@ -248,7 +248,7 @@
                                 </li>
                                 <li>
                                     <input type="radio" id="tidak-hadir" name="attendance" value="false" class="sr-only peer" />
-                                    <label for="tidak-hadir" class="inline-flex h-full items-center w-full p-2 text-pinky border border-[#ffaba8] rounded-lg cursor-pointer hover:text-pinky hover:bg-[#ffe1e0] peer-checked:bg-[#ffe1e0] peer-checked:border-[#e72923ab] peer-checked:text-[#e72923ab]">
+                                    <label for="tidak-hadir" class="inline-flex h-full items-center w-full p-2 text-pinky border border-[#ffaba8] rounded-lg cursor-pointer hover:text-pinky hover:bg-[#ffe1e0] active:text-pinky active:bg-[#ffe1e0] peer-checked:bg-[#ffe1e0] peer-checked:border-[#e72923ab] peer-checked:text-[#e72923ab]">
                                         
                                         <!-- Custom Radio Indicator -->
                                         <!-- <div class="w-4 h-4 mr-2 rounded-full border-2 border-[#ffaba8] flex items-center justify-center peer-checked:bg-[#e72923ab] peer-checked:border-[#e72923ab]">
@@ -268,7 +268,7 @@
                             <textarea placeholder="Pesan/Ucapan untuk kami" class="shadow appearance-none w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline  placeholder-[#f09999] text-[#e72923ab] bg-[#ffe1e0] rounded-lg px-2" id="message" rows="3"></textarea>
                         </div>
                         <div class="flex justify-center">
-                            <button type="submit" class="btn-primary bg-[#e27e7e] hover:bg-[#e78e8e] text-white font-bold py-2 px-6 rounded-full text-sm">Kirim Konfirmasi</button>
+                            <button type="submit" class="btn-primary bg-[#e27e7e] hover:bg-[#e78e8e] active:bg-[#e78e8e] text-white font-bold py-2 px-6 rounded-full text-sm">Kirim Konfirmasi</button>
                         </div>
                     </form>
                     
@@ -375,7 +375,7 @@
                         <!-- <div class="gift-box p-4 border border-[#d4a4a0] rounded-lg">
                             <h4 class="font-bold mb-3 text-gray-800">Alamat Pengiriman</h4>
                             <div class="mb-3">
-                                <button onclick="copyToClipboard('Jl. Bunga Melati Gg. Melati 1 No.24, RT.8/RW.2, Cipete Sel., Kec. Cilandak, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12410')" class="bg-pink-100 hover:bg-pink-200 text-pinky py-1 px-3 rounded text-sm mb-2">
+                                <button onclick="copyToClipboard('Jl. Bunga Melati Gg. Melati 1 No.24, RT.8/RW.2, Cipete Sel., Kec. Cilandak, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12410')" class="bg-pink-100 hover:bg-pink-200 active:bg-pink-200 text-pinky py-1 px-3 rounded text-sm mb-2">
                                     Salin Alamat
                                 </button>
                             </div>
@@ -407,7 +407,7 @@
                     <p class="text-gray-700 max-w-2xl mx-auto mb-12">
                         Atas segala doa, restu dan kebahagiaan yang diberikan, kami mengucapkan terima kasih yang sebesar-besarnya. Semoga Allah SWT memberkahi hari bahagia kami dan membalas segala kebaikan Anda.
                     </p>
-                    <div class="couple-name text-4xl text-pinky mb-3 transform hover:scale-105 transition-transform duration-500">
+                    <div class="couple-name text-4xl text-pinky mb-3 transform hover:scale-105 active:scale-105 transition-transform duration-500">
                         <span class="drop-shadow-lg">Alfatah & Anggreyni</span>
                     </div>
                     <p class="text-gray-600 bg-opacity-70 py-2 px-6 inline-block">Beserta Keluarga</p>
@@ -442,9 +442,9 @@
 
         <!-- Music Player Balloon -->
         <div id="music-balloon" class="hidden music-balloon bottom-4 right-4 fixed z-50">
-            <audio id="background-music" class="opacity-0" controls autoplay loop>
-                <source src="./assets/Kita usahakan rumah itu.ogg" type="audio/ogg">
+            <audio id="background-music" class="opacity-0" controls loop>
                 <source src="./assets/Kita usahakan rumah itu.mp3" type="audio/mpeg">
+                <source src="./assets/Kita usahakan rumah itu.ogg" type="audio/ogg">
                 Your browser does not support the audio element.
             </audio>
             <div class="vinyl-record">

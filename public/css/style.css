@@ -769,7 +769,7 @@ body {
     transform-style:preserve-3d;
     transition:transform .8s cubic-bezier(.22,.61,.36,1);
 }
-.card-container:hover .card{ transform:rotateY(180deg) }
+.card.flipped{ transform:rotateY(180deg) }
 
 .card-face{
     position:absolute; inset:0;

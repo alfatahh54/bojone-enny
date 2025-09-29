@@ -660,7 +660,15 @@ document.addEventListener('DOMContentLoaded', function() {
                     rotation: 0
                 };
                 flutter(giftSection, id, vartimer, pos);
-            }            
+            }
         }
     }
+
+    // Card flip on click for touch devices
+    document.querySelectorAll('.card-container').forEach(container => {
+        container.addEventListener('click', () => {
+            const card = container.querySelector('.card');
+            card.classList.toggle('flipped');
+        });
+    });
 });
